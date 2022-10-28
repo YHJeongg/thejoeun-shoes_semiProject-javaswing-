@@ -11,9 +11,9 @@
 <body>
 <div style="text-align: center;">
 <br><br>
-	&nbsp;&nbsp;&nbsp;<h2><a href="home.jsp">Hosix Shose</a></h2>&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;<h2><a href="home.jsp">Hosix Shoes</a></h2>&nbsp;&nbsp;&nbsp;
 	<h3>LOGIN</h3>
-	<form action="lgin.do" method="post" name="Login">
+	<form action="login.do" method="post" name="Login">
 	<table style="margin-left: auto; margin-right: auto;">
 	<tr>
 	   <td><input type="text" placeholder="Login" size="30" name="cId"></td>

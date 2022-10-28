@@ -26,6 +26,13 @@ public class CustomerDto {
 		this.cIndate = cIndate;
 		this.cOutdate = cOutdate;
 	}
+	
+
+	public CustomerDto(String cId, String cPw) {
+		super();
+		this.cId = cId;
+		this.cPw = cPw;
+	}
 
 	public String getcId() {
 		return cId;

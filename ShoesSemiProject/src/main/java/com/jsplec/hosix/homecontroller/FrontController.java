@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.jsplec.hosix.command.HCommand;
+import com.jsplec.hosix.command.HLoginSelectCommand;
 import com.jsplec.hosix.command.HSignupInsertCommand;
 
 /**
@@ -63,8 +64,15 @@ public class FrontController extends HttpServlet {
 			System.out.println("signup.do");
 			command = new HSignupInsertCommand();
 		    command.execute(request, response);
-		    viewPage="signup.jsp";
+		    viewPage="login.jsp";
 		break;
+		case("/login.do"):
+			System.out.println("login.do");
+		    command = new HLoginSelectCommand();
+		    command.execute(request, response);
+		    viewPage="home.jsp";
+		break;
+		    
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
