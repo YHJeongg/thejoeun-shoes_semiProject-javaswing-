@@ -28,8 +28,8 @@ public class ManufacturerDao {
 
 	// Method
 
-	public ArrayList<ManufacturerDto> manageOrderList() { // 아래에 int bId를 쓰려고 sbId를 썼음
-		ArrayList<ManufacturerDto> dtos = null;
+	public ArrayList<ManufacturerDto> manageOrderList() { 
+		ArrayList<ManufacturerDto> dtos = new ArrayList<ManufacturerDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -37,7 +37,7 @@ public class ManufacturerDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "select mfBrand from mvc_addressbook";
+			String query = "select * from manufacturer";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -66,6 +66,20 @@ public class ManufacturerDao {
 		}
 		return dtos;
 
-	} // content_view
+	} // 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

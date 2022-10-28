@@ -8,42 +8,34 @@ public class ManufacturerDto {
 	String mfBrand;
 	String mfCrn;
 	String mfProductname;
-	String mfCategoty;
+	String mfCategory;
 	String mfSize;
 	int mfPrice;
 	
 	// Constructor
 	public ManufacturerDto(int mfId, String mfName, String mfBrand, String mfCrn, String mfProductname,
-			String mfCategoty, String mfSize, int mfPrice) {
+			String mfCategory, String mfSize, int mfPrice) {
 		super();
 		this.mfId = mfId;
 		this.mfName = mfName;
 		this.mfBrand = mfBrand;
 		this.mfCrn = mfCrn;
 		this.mfProductname = mfProductname;
-		this.mfCategoty = mfCategoty;
+		this.mfCategory = mfCategory;
 		this.mfSize = mfSize;
 		this.mfPrice = mfPrice;
 	}
 	
-	
-
-
-
-	public ManufacturerDto(int mfId, String mfBrand, String mfProductname, String mfCategoty, String mfSize,
+	public ManufacturerDto(int mfId, String mfBrand, String mfProductname, String mfCategory, String mfSize,
 			int mfPrice) {
 		super();
 		this.mfId = mfId;
 		this.mfBrand = mfBrand;
 		this.mfProductname = mfProductname;
-		this.mfCategoty = mfCategoty;
+		this.mfCategory = mfCategory;
 		this.mfSize = mfSize;
 		this.mfPrice = mfPrice;
 	}
-
-
-
-
 
 	public int getMfId() {
 		return mfId;
@@ -85,12 +77,12 @@ public class ManufacturerDto {
 		this.mfProductname = mfProductname;
 	}
 
-	public String getMfCategoty() {
-		return mfCategoty;
+	public String getMfCategory() {
+		return mfCategory;
 	}
 
-	public void setMfCategoty(String mfCategoty) {
-		this.mfCategoty = mfCategoty;
+	public void setMfCategory(String mfCategory) {
+		this.mfCategory = mfCategory;
 	}
 
 	public String getMfSize() {

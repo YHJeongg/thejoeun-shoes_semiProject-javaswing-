@@ -12,7 +12,10 @@
 </head>
 <body>
 	<div>
+		<br>
+		<br>	
 		<h1 align="center">Order Product from manufacturer</h1>
+		<br>
 		<br>
 <%
 	String queryName = request.getParameter("query");
@@ -27,10 +30,9 @@
 		<div align="center">
 		검색 선택 : 
 			<select name="query">
-				<option value="mfBrand">브랜드</option>
+				<option value="brand">브랜드</option>
 				<option value="name" selected="selected">상품명</option>
 				<option value="size">사이즈</option>
-				<option value="qty">수량</option>
 			</select>&nbsp;&nbsp;&nbsp; <!-- &nbsp;는 띄어쓰기 -->
 			<input type="text" name="content" size="30">
 			<input type="submit" value="검색">
@@ -38,25 +40,24 @@
 	</form>
 	<br>
 
-
-		<form action="take.do">
+	<form action="take.do">
 		<table border="1" class="table table-hover table-bordered border-secondary" style="width: 60%; margin: auto;">
 			<thead class="table-success">
 				<tr style="text-align: center;">
-					<th scope="col">브랜드</th><th>상품명</th><th>카테고리</th><th>사이즈</th><th>가격</th><th>수량</th><th>발주</th>
+					<th scope="col">등록번호</th><th>브랜드</th><th>상품명</th><th>카테고리</th><th>사이즈</th><th>가격</th><th>수량</th><th>발주</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${list}" var="dto">
 					<tr>
+						<td>${dto.mfId}</td>
 						<td>${dto.mfBrand}</td>
 						<td>${dto.mfProductname}</td>
 						<td>${dto.mfCategory}</td>
 						<td>${dto.mfSize}</td>
 						<td>${dto.mfPrice}</td>
-						<td><input type="number" name="tQty" >
+						<td><input type="number" name="tQty">
 						<td><input type="submit" value="발주">
-						<td><a href="take.do?tQty="tQty>O</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
