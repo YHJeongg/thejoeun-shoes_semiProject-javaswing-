@@ -33,25 +33,22 @@ public class HManageProductDao {
 		//전체 검색
 		
 		
-		public ArrayList<HManageOrderDto> list(){
+		public ArrayList<HManageOrderDto> manage_product(){
 			ArrayList<HManageOrderDto> dtos=new ArrayList<HManageOrderDto>();
 			Connection connection=null;
 			PreparedStatement preparedStatement=null;
 			ResultSet resultSet=null;//검색
-			
+			System.out.println("try에 들어갑니ㄹㄹㄹ다.");
 			try {
 				connection=dataSource.getConnection();
-				
-				String query="select pId,take_tOrderid ,pBrand,"
-						+ "pName, pPrice, pCategory,"
-						+ "pSize, pStokedate,pStock"
-						+ "pImage, pInformation"
-						+ "from product " ;
+				System.out.println("값을 찾았을까?");
+				String query="select pId, take_tOrderid, pBrand, "
+						+ "pName, pPrice, pCategory, pSize, pStokedate, pStock, pImage, pInformation from product " ;
 				preparedStatement=connection.prepareStatement(query);
 				resultSet=preparedStatement.executeQuery();
 				
 				while(resultSet.next()) {
-					int pId=resultSet.getInt("");
+					int pId=resultSet.getInt("pId");
 					int take_tOrderid=resultSet.getInt("take_tOrderid");
 					String pBrand=resultSet.getString("pBrand");
 					String pName=resultSet.getString("pName");
@@ -62,8 +59,7 @@ public class HManageProductDao {
 					int pStock=resultSet.getInt("pStock");
 					String pImage=resultSet.getString("pImage");
 					String pInformation=resultSet.getString("pInformation");
-					
-					
+					System.out.println("값이 들어왔습니다.");
 					
 					HManageOrderDto dto=new HManageOrderDto(pId,take_tOrderid,pBrand,pName, pPrice,
 							pCategory,pSize,pStokedate,pStock,pImage,pInformation);
@@ -86,7 +82,7 @@ public class HManageProductDao {
 				}
 			}
 			return dtos;
-		}//list
+		}//manage_product
 //		public BDto contentView(String sseq) {
 //			BDto dto=null;
 //			Connection connection=null;

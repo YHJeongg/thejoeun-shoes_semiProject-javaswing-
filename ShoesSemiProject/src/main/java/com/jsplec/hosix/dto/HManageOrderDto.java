@@ -18,7 +18,6 @@ public class HManageOrderDto {
 	String pInformation;//제품 상세 정보
 	
 	public HManageOrderDto() {
-		
 	}
 
 	public HManageOrderDto(int pId, int take_tOrderid, String pBrand, String pName, int pPrice, String pCategory,

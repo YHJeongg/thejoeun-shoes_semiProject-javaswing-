@@ -14,8 +14,10 @@ public class HMPListCommand implements HCommand {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		HManageProductDao dao=new HManageProductDao();
-		ArrayList<HManageOrderDto> dtos=dao.list();
-		request.setAttribute("list", dtos);
+		System.out.println("Command가 실행되었습니다.");
+		ArrayList<HManageOrderDto> dtos=dao.manage_product();
+		
+		request.setAttribute("manage_product", dtos);
 
 	}
 //Select문
