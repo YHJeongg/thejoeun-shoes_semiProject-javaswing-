@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <title>Zay Shop - Product Listing Page</title>
+    <title>HosiX</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,6 +27,29 @@ https://templatemo.com/tm-559-zay-shop
 </head>
 
 <body>
+<script type="text/javascript">
+function changeNameTagRunning() {
+    const nameTag = document.getElementById('nameTag');
+    const labelTag = document.getElementById('labelTagRunning');
+    nameTag.innerText = labelTag.innerText
+}
+function changeNameTagSlipper() {
+    const nameTag = document.getElementById('nameTag');
+    const labelTag = document.getElementById('labelTagSlipper');
+    nameTag.innerText = labelTag.innerText
+}
+function changeNameTagShoes() {
+    const nameTag = document.getElementById('nameTag');
+    const labelTag = document.getElementById('labelTagShoes');
+    nameTag.innerText = labelTag.innerText
+}
+function changeNameTagSneakers() {
+    const nameTag = document.getElementById('nameTag');
+    const labelTag = document.getElementById('labelTagSneakers');
+    nameTag.innerText = labelTag.innerText
+}
+</script>
+
    <jsp:include page="header.jsp"></jsp:include>
    
     <!-- Start Content -->
@@ -33,37 +57,42 @@ https://templatemo.com/tm-559-zay-shop
         <div class="row">
 
             <div class="col-lg-3">
-                <h1 class="h2 pb-4">Categories</h1>
+                <h1 class="h2 pb-4"><b>Brand</b></h1>
                 <ul class="list-unstyled templatemo-accordion">
                     <li class="pb-3">
                         <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Gender
+                            <b>Nike</b>
                             <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul class="collapse show list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Men</a></li>
-                            <li><a class="text-decoration-none" href="#">Women</a></li>
+                            <li><label class="text-decoration-none" id="labelTagRunning" onclick="changeNameTagRunning()">운동화</label></li>
+                            <li><label class="text-decoration-none" id="labelTagSlipper" onclick="changeNameTagSlipper()">슬리퍼 / 샌들</label></li>
+                            <li><label class="text-decoration-none" id="labelTagShoes" onclick="changeNameTagShoes()">구두</label></li>
+                            <li><label class="text-decoration-none" id="labelTagSneakers" onclick="changeNameTagSneakers()">스니커즈</label></li>
                         </ul>
                     </li>
                     <li class="pb-3">
                         <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Sale
+                            <b>Adidas</b>
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Sport</a></li>
-                            <li><a class="text-decoration-none" href="#">Luxury</a></li>
+                            <li><label class="text-decoration-none" id="labelTagRunning" onclick="changeNameTagRunning()">운동화</label></li>
+                            <li><label class="text-decoration-none" id="labelTagSlipper" onclick="changeNameTagSlipper()">슬리퍼 / 샌들</label></li>
+                            <li><label class="text-decoration-none" id="labelTagShoes" onclick="changeNameTagShoes()">구두</label></li>
+                            <li><label class="text-decoration-none" id="labelTagSneakers" onclick="changeNameTagSneakers()">스니커즈</label></li>
                         </ul>
                     </li>
                     <li class="pb-3">
                         <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Product
+                            <b>New Balance</b>
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#">Bag</a></li>
-                            <li><a class="text-decoration-none" href="#">Sweather</a></li>
-                            <li><a class="text-decoration-none" href="#">Sunglass</a></li>
+                            <li><label class="text-decoration-none" id="labelTagRunning" onclick="changeNameTagRunning()">운동화</label></li>
+                            <li><label class="text-decoration-none" id="labelTagSlipper" onclick="changeNameTagSlipper()">슬리퍼 / 샌들</label></li>
+                            <li><label class="text-decoration-none" id="labelTagShoes" onclick="changeNameTagShoes()">구두</label></li>
+                            <li><label class="text-decoration-none" id="labelTagSneakers" onclick="changeNameTagSneakers()">스니커즈</label></li>
                         </ul>
                     </li>
                 </ul>
@@ -74,13 +103,7 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">All</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none" href="#">Women's</a>
+                                <label class="h3 text-dark text-decoration-none mr-3" id="nameTag">All</label>
                             </li>
                         </ul>
                     </div>
@@ -94,6 +117,8 @@ https://templatemo.com/tm-559-zay-shop
                         </div>
                     </div>
                 </div>
+                
+                
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
@@ -429,6 +454,8 @@ https://templatemo.com/tm-559-zay-shop
                         </div>
                     </div>
                 </div>
+                
+                
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
                         <li class="page-item disabled">
@@ -454,10 +481,6 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
                     <h1 class="h1">Our Brands</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        Lorem ipsum dolor sit amet.
-                    </p>
                 </div>
                 <div class="col-lg-9 m-auto tempaltemo-carousel">
                     <div class="row d-flex flex-row">
