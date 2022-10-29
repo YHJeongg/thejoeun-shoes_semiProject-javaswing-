@@ -47,7 +47,7 @@
 	String queryContent = request.getParameter("content");
 	
 	if(queryName == null){
-		queryName = "name";
+		queryName = "mfName";
 		queryContent = "";
 	}
 %>
@@ -65,7 +65,7 @@
 	</form>
 	<br>
 
-	<form action="manage_take_action.do">
+	<form action="manage_take_action.do" method="post">
 		<table border="1" class="table table-hover table-bordered border-secondary" style="width: 60%; margin: auto;">
 			<thead class="table-success">
 				<tr style="text-align: center;">

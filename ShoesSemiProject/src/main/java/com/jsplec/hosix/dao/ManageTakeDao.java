@@ -54,7 +54,7 @@ public class ManageTakeDao {
 		}
 	} // takeInsertTake
 
-	// take Table 에 입력한 tOrder 가져오기
+//	// take Table 에 입력한 tOrder 가져오기
 	public int checkTakeOrderId() { 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -88,22 +88,27 @@ public class ManageTakeDao {
 	} // content_view
 	
 	// 관리자가 발주버튼 클릭 > 2. Product Table에서 정보 유무 판단
-	public int checkProduct(int take_tOrderid) { 
+	public int checkProduct(String mfBrand, String mfProductname, String mfSize) { 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		int check = 0;
+		int pId = 0;
+		int result;
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select count(*) from product where take_tOrderid = ?";
+			String query = "select count(*), min(pId) from product where pBrand = ? and pName = ? and pSize = ?";
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, take_tOrderid);
+			preparedStatement.setString(1, mfBrand);
+			preparedStatement.setString(2, mfProductname);
+			preparedStatement.setString(3, mfSize);
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) { // 한번 돌아가니까
-				check = resultSet.getInt(1); // 아래에 칼럼 넣으면 위에 * 적어도 됨
+				check = resultSet.getInt(1); 
+				pId = resultSet.getInt(2);
 			}
 					
 		}catch(Exception e) {
@@ -117,7 +122,12 @@ public class ManageTakeDao {
 				e.printStackTrace();
 			}
 		}
-		return check;
+		if(check == 0) {
+			result = 0;
+		}else {
+			result = pId;
+		}
+		return result;
 
 	} // content_view
 	
@@ -159,17 +169,17 @@ public class ManageTakeDao {
 	} // takeInsertProduct
 
 	// 관리자가 발주버튼 클릭 > 3-2. Product Table 정보 Update
-	public void takeUpdateProduct(int tQty, int take_tOrderid) {
+	public void takeUpdateProduct(int tQty, int pId) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "update product set pStockdate = now(), pStock = pStock+? where take_tOrderid = ?";
+			String query = "update product set pStockdate = now(), pStock = pStock+? where pId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, tQty);
-			preparedStatement.setInt(2, take_tOrderid);
+			preparedStatement.setInt(2, pId);
 			
 			preparedStatement.executeUpdate();
 					
