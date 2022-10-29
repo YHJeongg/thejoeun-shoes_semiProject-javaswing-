@@ -22,8 +22,6 @@ public class HMTakeActionCommand implements HCommand {
 		String mfSize = request.getParameter("mfSize");
 		int pId;
 
-		System.out.println("<><><><><><>");
-		
 		ManageTakeDao dao = new ManageTakeDao();
 		dao.takeInsertTake(manager_mId, manufacturer_mfId, tPrice, tQty);
 		take_tOrderid = dao.checkTakeOrderId();
@@ -33,7 +31,6 @@ public class HMTakeActionCommand implements HCommand {
 			dao.takeInsertProduct(take_tOrderid, mfBrand, mfProductname, mfPrice, mfCategory, mfSize, tQty);
 		} else {
 			dao.takeUpdateProduct(tQty, pId);
-			System.out.println("업데이트 실행함");
 		}
 
 	}

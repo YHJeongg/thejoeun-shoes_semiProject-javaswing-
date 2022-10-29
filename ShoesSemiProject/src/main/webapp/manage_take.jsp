@@ -40,20 +40,13 @@
 		<br> <br>
 		<h1 align="center">Order Product from manufacturer</h1>
 		<br> <br>
-		<%
-		String queryName = request.getParameter("query");
-		String queryContent = request.getParameter("content");
 
-		if (queryName == null) {
-			queryName = "mfName";
-			queryContent = "";
-		}
-		%>
 		<form action="manage_take_search.do">
 			<div align="center">
 				검색 선택 : <select name="query">
-					<option value="mfBrand" selected="selected">브랜드</option>
-					<option value="mfName">상품명</option>
+					<option value="mfBrand" selected="selected">전체보기</option>
+					<option value="mfBrand">브랜드</option>
+					<option value="mfProductname">상품명</option>
 					<option value="mfSize">사이즈</option>
 				</select>&nbsp;&nbsp;&nbsp;
 				<!-- &nbsp;는 띄어쓰기 -->
@@ -95,7 +88,7 @@
 								name="tQty" size="5"></td>
 							<td align="center" width="100"><input type="submit"
 								value="  발주  " size="40"
-								style="background-color: rgb(213, 230, 222); color: black; font-weight: bold; border-style: double;"></td>
+								style="background-color: rgb(213, 230, 222); color: red; font-weight: bold; border-style: double;"></td>
 						</tr>
 					</form>
 				</c:forEach>
