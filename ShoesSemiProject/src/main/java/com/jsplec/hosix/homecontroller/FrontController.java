@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jsplec.hosix.command.HCategoryPListCommand;
 import com.jsplec.hosix.command.HCommand;
 import com.jsplec.hosix.command.HPListCommand;
 
@@ -52,11 +53,15 @@ public class FrontController extends HttpServlet {
         String uri = request.getRequestURI();
         String conPath = request.getContextPath();
         String com = uri.substring(conPath.length());
-        
         switch (com) {
         // 전체 내용 검색
         case("/productList.do"):
             command = new HPListCommand();
+            command.execute(request, response);
+            viewPage = "productList.jsp";
+            break;
+        case("/productListCategory.do"):
+            command = new HCategoryPListCommand();
             command.execute(request, response);
             viewPage = "productList.jsp";
             break;
