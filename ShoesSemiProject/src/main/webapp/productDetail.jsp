@@ -186,7 +186,7 @@ https://templatemo.com/tm-559-zay-shop
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
-                                            <li class="list-inline-item">Size :
+                                            <li class="list-inline-item"> <b>Size :</b>
                                                 <input type="hidden" name="productSize" id="product-size" value="S">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">220</span></li>
@@ -198,10 +198,11 @@ https://templatemo.com/tm-559-zay-shop
                                             <li class="list-inline-item"><span class="btn btn-success btn-size">280</span></li>
                                         </ul>
                                     </div>
+                                    <p>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                                수량
+                                                <b>수량 :</b>
                                                 <input type="hidden" name="productQuanity" id="product-quanity" value="1">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
@@ -210,6 +211,7 @@ https://templatemo.com/tm-559-zay-shop
                                         </ul>
                                     </div>
                                 </div>
+                                </p>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">구매</button>
