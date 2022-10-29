@@ -2,7 +2,7 @@ package com.jsplec.hosix.dto;
 
 import java.sql.Timestamp;
 
-public class TakeDto {
+public class ManageTakeDto {
 	int tOrderid;
 	String manager_mId;
 	int manufacturer_mfId;
