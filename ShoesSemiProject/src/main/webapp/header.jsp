@@ -23,7 +23,7 @@
                             <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="productList.jsp">Shop</a>
+                            <a class="nav-link" href="productList.do">Shop</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
