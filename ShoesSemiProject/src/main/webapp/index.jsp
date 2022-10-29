@@ -156,7 +156,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="shop-single.html">
+                        <a href="productList.jsp">
                             <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
