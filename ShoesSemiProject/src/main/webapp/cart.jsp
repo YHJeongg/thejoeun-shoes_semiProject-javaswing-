@@ -12,7 +12,8 @@
 <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
 	href="assets/img/favicon.ico">
-
+	
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/templatemo.css">
 <link rel="stylesheet" href="assets/css/custom.css">
@@ -20,23 +21,17 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 <body>
 
 	<!-- include Header -->
 	<jsp:include page="header.jsp"></jsp:include>
 	<!-- Start Content -->
-	<div class="container py-5">
-		<div class="row">
+	<div class="container py-5" align="center">
 			<div class="col-lg-10">
 				<table class="table table-hover">
 					<thead>
-						<tr>
+						<tr align="center">
 							<th>상품 이미지</th>
 							<th>상품 이름</th>
 							<th>상품 수량</th>
@@ -45,17 +40,33 @@
 						</tr>
 					</thead>
 					<c:forEach items="${cartlist}" var="dto">
-						<tr>
+						<tr align="center" valign="middle">
 							<td><img width="100" height="100" src="assets/img/product/${dto.pBrand}/${dto.pName}.png"></td>
 							<td>${dto.pName}</td>
 							<td>${dto.cQty}</td>
 							<td><fmt:formatNumber value="${dto.pPrice * dto.cQty}" groupingUsed="true" /> 원</td>
-							<td><a href="cartDelete.do?product_pId=${dto.product_pId}" class="text-decoration-none"><span class="glyphicon glyphicon-remove"></span></a></td>
+							<td><a href="cartDelete.do?product_pId=${dto.product_pId}" class="text-decoration-none"><span class="material-symbols-outlined">close</span></a></td>
 						</tr>
 					</c:forEach>
+					<tr align="center">
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><h5>총 금액 : </h5></td>
+						<td>
+						<c:set var = "total" value = "0" />
+							<c:forEach items="${cartlist}" var="dto">
+								<c:set var= "total" value="${total + (dto.pPrice * dto.cQty)}"/>
+							</c:forEach>
+							<fmt:formatNumber value="${total}" groupingUsed="true" /> 원
+						</td>
+					</tr>
 				</table>
+				<div align="right">
+				<button class="btn btn-success btn-lg px-3" type="button">취소</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn btn-success btn-lg px-3" type="button">구매</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
 			</div>
-		</div>
 	</div>
 	<!--End Brands-->
 
