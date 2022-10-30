@@ -63,36 +63,6 @@ public class FrontController extends HttpServlet {
         String conPath = request.getContextPath();
         String com = uri.substring(conPath.length());
 
-        switch (com) {
-            // 전체 내용 검색
-            case ("/productList.do"):
-                command = new HPListCommand();
-                command.execute(request, response);
-                viewPage = "productList.jsp";
-                break;
-            case ("/productListCategory.do"):
-                command = new HCategoryPListCommand();
-                command.execute(request, response);
-                viewPage = "productList.jsp";
-                break;
-            // 상세보기 클릭시 상세내용 출력
-            case ("/productDetail.do"):
-                command = new HProductdetailCommand();
-                command.execute(request, response);
-                viewPage = "productDetail.jsp";
-                break;
-            case ("/insertCart.do"):
-                command = new HCartInsertCommand();
-                command.execute(request, response);
-                viewPage = "cart.do";
-                break;
-            case ("/cart.do"):
-                command = new HCartListCommand();
-                command.execute(request, response);
-                viewPage = "cart.jsp";
-                break;
-        }
-
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
         dispatcher.forward(request, response);
     }
