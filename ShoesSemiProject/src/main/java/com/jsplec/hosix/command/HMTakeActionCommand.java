@@ -10,11 +10,10 @@ public class HMTakeActionCommand implements HCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String manager_mId = "kimsin"; // request.getSession("manager_mId") *********변경하기
+		String manager_mId = "admin"; // request.getSession("manager_mId") *********변경하기
 		String manufacturer_mfId = request.getParameter("mfId"); // ********변경하기
-		String tPrice = request.getParameter("mfPrice");
 		int tQty = Integer.parseInt(request.getParameter("tQty"));
-		int take_tOrderid;
+		int take_tId;
 		String mfBrand = request.getParameter("mfBrand");
 		String mfProductname = request.getParameter("mfProductname"); 
 		int mfPrice = Integer.parseInt(request.getParameter("mfPrice"));
@@ -23,12 +22,12 @@ public class HMTakeActionCommand implements HCommand {
 		int pId;
 
 		ManageTakeDao dao = new ManageTakeDao();
-		dao.takeInsertTake(manager_mId, manufacturer_mfId, tPrice, tQty);
-		take_tOrderid = dao.checkTakeOrderId();
+		dao.takeInsertTake(manager_mId, manufacturer_mfId, tQty);
+		take_tId = dao.checkTakeId();
 		pId = dao.checkProduct(mfBrand, mfProductname, mfSize);
 		System.out.println(pId);
 		if (pId == 0) {
-			dao.takeInsertProduct(take_tOrderid, mfBrand, mfProductname, mfPrice, mfCategory, mfSize, tQty);
+			dao.takeInsertProduct(take_tId, mfBrand, mfProductname, mfPrice, mfCategory, mfSize, tQty);
 		} else {
 			dao.takeUpdateProduct(tQty, pId);
 		}

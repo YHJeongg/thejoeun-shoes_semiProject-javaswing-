@@ -27,21 +27,20 @@ public class ManageTakeDao {
 	}
 
 	// Method
-	
 	// 관리자가 발주버튼 클릭 > 1. Take Table로 Insert
-	public void takeInsertTake(String manager_mId, String manufacturer_mfId, String mfPrice, int tQty) {
+	public void takeInsertTake(String manager_mId, String manufacturer_mfId, int tQty) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
+		System.out.println("테이크 인서트");
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "insert into take (manager_mId, manufacturer_mfId, tPrice, tQty, tDate) values (?,?,?,?,now())";
+			String query = "insert into take (manager_mId, manufacturer_mfId, tQty, tDate) values (?,?,?,now())";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, manager_mId);
 			preparedStatement.setString(2, manufacturer_mfId);
-			preparedStatement.setString(3, mfPrice);
-			preparedStatement.setInt(4, tQty);
+			preparedStatement.setInt(3, tQty);
 			
 			preparedStatement.executeUpdate();
 					
@@ -58,7 +57,7 @@ public class ManageTakeDao {
 	} // takeInsertTake
 
 //	// take Table 에 입력한 tOrder 가져오기
-	public int checkTakeOrderId() { 
+	public int checkTakeId() { 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -67,7 +66,7 @@ public class ManageTakeDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select max(tOrderid) from take";
+			String query = "select max(tId) from take";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -136,7 +135,7 @@ public class ManageTakeDao {
 	
 	
 	// 관리자가 발주버튼 클릭 > 3-1. Product Table 정보 Insert
-	public void takeInsertProduct(int take_tOrderid, String mfBrand, String mfProductname, int mfPrice, String mfCategory,
+	public void takeInsertProduct(int take_tId, String mfBrand, String mfProductname, int mfPrice, String mfCategory,
 			String mfSize, int tQty) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -144,10 +143,10 @@ public class ManageTakeDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "insert into product (take_tOrderid, pBrand, pName, pPrice, pCategory, pSize, pStockdate, pStock) "
+			String query = "insert into product (take_tId, pBrand, pName, pPrice, pCategory, pSize, pStockdate, pStock) "
 					+ "values (?,?,?,?,?,?,now(),?)";
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, take_tOrderid);
+			preparedStatement.setInt(1, take_tId);
 			preparedStatement.setString(2, mfBrand);
 			preparedStatement.setString(3, mfProductname);
 			preparedStatement.setInt(4,  (mfPrice/100*110));

@@ -27,8 +27,8 @@ public class ManufacturerDao {
 	}
 
 	// Method
-	// 관리자가 발주하는 페이지에 들어갈 때 공급업체의 상품리스트 불러오기
-	public ArrayList<ManufacturerDto> manageOrderList() { 
+	// 관리자가 발주하는 공급업체의 상품리스트 전체 검색
+	public ArrayList<ManufacturerDto> listAction() {
 		ArrayList<ManufacturerDto> dtos = new ArrayList<ManufacturerDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -37,7 +37,6 @@ public class ManufacturerDao {
 		try {
 			connection = dataSource.getConnection();
 
-//			String query2 = "select * from manufacturer group by mfProductname order by mfSize asc";
 			String query = "select * from manufacturer group by mfProductname, mfId order by mfBrand, mfProductname;";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
@@ -58,19 +57,22 @@ public class ManufacturerDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (resultSet != null) resultSet.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (connection != null) connection.close();
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return dtos;
 
-	} // manageOrderList
-	
-	// 관리자가 발주하는 페이지에 들어갈 때 공급업체의 상품리스트 불러오기
-	public ArrayList<ManufacturerDto> searchListAction(String queryName, String queryContent) { 
+	} // listAction
+
+	// 관리자가 발주하는 공급업체의 상품리스트 선택 검색
+	public ArrayList<ManufacturerDto> searchListAction(String queryName, String queryContent) {
 		ArrayList<ManufacturerDto> dtos = new ArrayList<ManufacturerDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -79,8 +81,8 @@ public class ManufacturerDao {
 		try {
 			connection = dataSource.getConnection();
 
-//			String query2 = "select * from manufacturer group by mfProductname order by mfSize asc";
-			String query = "select * from manufacturer where "+queryName+" like '%"+queryContent+"%' group by mfProductname, mfId order by mfBrand, mfProductname;";
+			String query = "select * from manufacturer where " + queryName + " like '%" + queryContent
+					+ "%' group by mfProductname, mfId order by mfBrand, mfProductname;";
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -100,9 +102,12 @@ public class ManufacturerDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (resultSet != null) resultSet.close();
-				if (preparedStatement != null) preparedStatement.close();
-				if (connection != null) connection.close();
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -111,8 +116,4 @@ public class ManufacturerDao {
 
 	} // searchListAction
 
-
-	
-	
-	
 } // End
