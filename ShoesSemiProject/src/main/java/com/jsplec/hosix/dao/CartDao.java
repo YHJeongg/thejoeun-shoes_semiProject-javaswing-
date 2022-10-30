@@ -63,23 +63,24 @@ public class CartDao {
         try {
             connection = dataSource.getConnection();
 
-            String query1 = "select cu.cId, p.pId, sum(ca.cQty), p.pName, sum(p.pPrice), p.pBrand ";
+            String query1 = "select cu.cId, p.pId, sum(ca.cQty), p.pName, sum(p.pPrice), p.pBrand, p.pPrice ";
             String query2 = "from product as p, customer as cu, cart ca ";
             String query3 = "where p.pId = ca.product_pId and cu.cId = ca.customer_cId and ca.customer_cId = 'hotwo' ";
-            String query4 = "group by cu.cId, p.pId, p.pName, p.pBrand";
+            String query4 = "group by cu.cId, p.pId, p.pName, p.pBrand, p.pPrice";
             
             preparedStatement = connection.prepareStatement(query1 + query2 + query3 + query4);
             resultSet = preparedStatement.executeQuery();
-
+            
             while (resultSet.next()) {
                 String cId = resultSet.getString("cu.cId");
                 int pId = resultSet.getInt("p.pId");
                 int cQty = resultSet.getInt("sum(ca.cQty)");
                 String pName = resultSet.getString("p.pName");
-                int pPrice = resultSet.getInt("sum(p.pPrice)");
+                int pPriceSum = resultSet.getInt("sum(p.pPrice)");
                 String pBrand = resultSet.getString("p.pBrand");
+                int pPrice = resultSet.getInt("p.pPrice");
 
-                CartDto dto = new CartDto(cId, pId, cQty, pName, pPrice, pBrand);
+                CartDto dto = new CartDto(cId, pId, cQty, pName, pPriceSum, pBrand, pPrice);
                 dtos.add(dto);
             }
 
