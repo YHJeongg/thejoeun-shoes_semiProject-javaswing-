@@ -12,8 +12,9 @@
 		ID : TEST
 		
 		<form action="">
+		<input type="hidden" value="ksj1988" name="cId">
 		<input type="submit" value="주문내역" onclick="javascript: form.action='orderlist.jsp'">
-		<input type="submit" value="내 정보" onclick="javascript: form.action='mypage_info.jsp'">
+		<input type="submit" value="내 정보" onclick="javascript: form.action='mypage_infoselect.do'">
 		</form>
 		
 	</div>
