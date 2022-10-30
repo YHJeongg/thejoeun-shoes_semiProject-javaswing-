@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.jsplec.hosix.dao.ProductListDao;
 import com.jsplec.hosix.dto.ProductListDto;
 
-public class HPListCommand implements HCommand {
+public class HCategoryPListCommand implements HCommand {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         // TODO Auto-generated method stub
-        
-        String pName = request.getParameter("pName");
-        
+        String pCategory = request.getParameter("pCategory");
+        String pBrand = request.getParameter("pBrand");
+
         ProductListDao dao = new ProductListDao();
-        ArrayList<ProductListDto> dtos = dao.list(pName);
+        
+        ArrayList<ProductListDto> dtos = dao.categorylist(pCategory, pBrand);
         request.setAttribute("list", dtos);
 
     }
