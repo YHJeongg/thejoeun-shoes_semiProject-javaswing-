@@ -107,7 +107,7 @@ public class CustomerDao {
 			
 		} // select
 	
-	public int modify (String scId, String cName, String cTelno, String cEmail, String cAddress) {
+	public int mypageModify (String scId, String cName, String cTelno, String cEmail, String cAddress) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		int returnValue = 0;
@@ -142,7 +142,35 @@ public class CustomerDao {
 		
 	} // modify
 	
-	
+	public int delete (String scId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int returnValue = 0;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "delete from customer where cId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, scId);
+			
+			returnValue = preparedStatement.executeUpdate();
+			// executeUpdate()는 int를 리턴함. 리턴 값이 1일시 정상 입력됨.
+			
+		}catch(Exception e){
+			e.printStackTrace(); 
+			
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return returnValue;
+	} // delete
 	
 	
 	

@@ -17,8 +17,8 @@ public class HMypageModifyCommand implements HCommand {
 		String cEmail = request.getParameter("cEmail");
 		
 		CustomerDao dao = new CustomerDao();
-		int result = dao.modify(cId, cName, cTelno, cAddress, cEmail);
-		System.out.println(result);
+		int result = dao.mypageModify(cId, cName, cTelno, cAddress, cEmail);
+		System.out.println(result + " Modify Successful if 1");
 
 	}
 

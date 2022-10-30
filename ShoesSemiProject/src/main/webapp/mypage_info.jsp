@@ -23,7 +23,7 @@
 		<tr><td> 이메일 :</td> <td><input type="text" size="10" name="cEmail" value="${mypage_view.cEmail}"><br></td></tr> 
 		<tr><td> 주소 :</td> <td><input type="text" size="10" name="cAddress" value="${mypage_view.cAddress}"><br><br></td></tr>
 		<tr><td></td><td><input type="submit" value="수정" onclick="javascript: form.action='mypage_modify.do'">
-		<input type="submit" value="탈퇴" onclick="javascript: form.action='mypage_delete.jsp'"></td></tr>
+		<input type="submit" value="탈퇴" onclick="javascript: form.action='mypage_delete.do'"></td></tr>
 	
 		</table>
 		</form>

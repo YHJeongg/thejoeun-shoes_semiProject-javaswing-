@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsplec.hosix.command.HCategoryPListCommand;
 import com.jsplec.hosix.command.HCommand;
+import com.jsplec.hosix.command.HMypageDeleteCommand;
 import com.jsplec.hosix.command.HMypageModifyCommand;
 import com.jsplec.hosix.command.HMypageSelectCommand;
 import com.jsplec.hosix.command.HPListCommand;
@@ -68,6 +69,12 @@ public class FrontController extends HttpServlet {
 			command = new HMypageModifyCommand();
 			command.execute(request, response);
 			viewPage = "mypage_infoselect.do";
+		break;
+		
+    	case("/mypage_delete.do"):
+			command = new HMypageDeleteCommand();
+			command.execute(request, response);
+			viewPage = "index.jsp";
 		break;
 		
     	case("/productList.do"):

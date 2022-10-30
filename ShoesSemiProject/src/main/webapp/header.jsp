@@ -51,8 +51,9 @@
                     <%
                     	} else {
                     %>
-	                    	${cId}
-	                    	<a href="cartlist.do">장바구니</a>
+	                    	${cId} &nbsp;
+	                    	<a href="cartlist.do">장바구니</a> &nbsp;
+	                    	<a href="logout.do">로그아웃</a> &nbsp;
 	                    	
 	                 <%
                     	}
