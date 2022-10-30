@@ -33,11 +33,10 @@ public class OrdersDao {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		System.out.println(spId);
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select pId, pBrand, pName, pPrice, pCategory, pInformation, pStock from product where pId = " + spId ;
+			String query = "select pId, pBrand, pName, pPrice, pCategory, pInformation, pStock, pSize from product where pId = " + spId ;
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -49,8 +48,9 @@ public class OrdersDao {
 				int pPrice = resultSet.getInt("pPrice");
 				int pStock = resultSet.getInt("pStock");
 				int pId = resultSet.getInt("pId");
+				String pSize = resultSet.getString("pSize");
 				
-				dto = new ProductListDto(pId, pBrand, pName, pPrice, pCategory, pStock, pInformation);
+				dto = new ProductListDto(pId, pBrand, pName, pPrice, pCategory, pSize, pStock, pInformation);
 			}
 			
 		}catch(Exception e) {
@@ -67,22 +67,24 @@ public class OrdersDao {
 		return dto;
 	} // content_view
 	
-	// Insert Order button
-	public void buyShoes() {
+	
+	// ----------------- Product Detail Page END ------------------------
+	
+	
+	// Insert Order
+	public void insertordersAction(String oAddress, int oPrice, int oQty) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		//int returnValue=0;
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "insert into orders (oOrderid, customer_cId, product_pId, cart_cSeq, oAddress, oPrice, oQty, oDate) values (?, ?, ?, ?, ?, ?, ?, now())";
+			String query = "insert into orders (customer_cId, product_pId, oAddress, oPrice, oQty, oDate) values ('hosix', ?, ?, ?, ?, now())";
 			preparedStatement = connection.prepareStatement(query);
-//			preparedStatement.setString(1, bName);
-//			preparedStatement.setString(2, bTitle);
-//			preparedStatement.setString(3, bContent);
-//			
-			//returnValue =preparedStatement.executeUpdate();
+			preparedStatement.setString(1, oAddress);
+			preparedStatement.setInt(2, oPrice);
+			preparedStatement.setInt(3, oQty);
+			
 			preparedStatement.executeUpdate();
 			
 			
