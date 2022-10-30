@@ -67,53 +67,6 @@ public class FrontController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		System.out.println(com);
 
-		switch (com) {
-		// 발주 전체 리스트 검색
-		case ("/manage_take_list.do"):
-			command = new HMTakeListCommand();
-			command.execute(request, response);
-			viewPage = "manage_take.jsp";
-			break;
-
-		// 발주 선택 검색
-		case ("/manage_take_search.do"):
-			command = new HMTakeSearchCommand();
-			command.execute(request, response);
-			viewPage = "manage_take.jsp";
-			break;
-
-		// 발주
-		case ("/manage_take_action.do"):
-			command = new HMTakeActionCommand();
-			command.execute(request, response);
-			viewPage = "manage_take_list.do";
-			break;
-
-		// 발주 회원 리스트 검색
-		case ("/manage_customer_list.do"):
-			System.out.println("custListController");
-			command = new HMCustomerListCommand();
-			command.execute(request, response);
-			viewPage = "manage_customer_list.jsp";
-			break;
-
-		// 회원 선택검색
-		case ("/manage_customer_search.do"):
-			command = new HMCustomerSearchCommand();
-			command.execute(request, response);
-			viewPage = "manage_customer_list.jsp";
-			break;
-
-		// 회원삭제
-		case ("/manage_customer_delete.do"):
-			command = new HMCustomerDeleteCommand();
-			command.execute(request, response);
-			viewPage = "manage_customer_list.do";
-			break;
-
-
-		} // switch
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
