@@ -21,6 +21,10 @@
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -46,7 +50,7 @@
 							<td>${dto.pName}</td>
 							<td>${dto.cQty}</td>
 							<td><fmt:formatNumber value="${dto.pPrice * dto.cQty}" groupingUsed="true" /> 원</td>
-							<td><a href="#">X</a></td>
+							<td><a href="cartDelete.do?product_pId=${dto.product_pId}" class="text-decoration-none"><span class="glyphicon glyphicon-remove"></span></a></td>
 						</tr>
 					</c:forEach>
 				</table>

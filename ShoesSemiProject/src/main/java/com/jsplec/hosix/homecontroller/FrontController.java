@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jsplec.hosix.command.HCartDeleteCommand;
 import com.jsplec.hosix.command.HCartInsertCommand;
 import com.jsplec.hosix.command.HCartListCommand;
 import com.jsplec.hosix.command.HCategoryPListCommand;
@@ -90,6 +91,11 @@ public class FrontController extends HttpServlet {
                 command = new HCartListCommand();
                 command.execute(request, response);
                 viewPage = "cart.jsp";
+                break;
+            case ("/cartDelete.do"):
+                command = new HCartDeleteCommand();
+                command.execute(request, response);
+                viewPage = "cart.do";
                 break;
         }
 
