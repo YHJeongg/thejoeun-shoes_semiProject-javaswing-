@@ -99,5 +99,30 @@ public class CartDao {
         }
         return dtos;
     } 
+	
+	public void cartDelete(int product_pId) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = dataSource.getConnection();
+            
+            String query = "delete from cart where product_pId = ?";
+            preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setInt(1, product_pId);
+            
+            preparedStatement.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(preparedStatement != null) preparedStatement.close();
+                if(connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 		
 } // End
