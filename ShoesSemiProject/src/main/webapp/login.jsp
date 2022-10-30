@@ -29,6 +29,12 @@
 	</tr>
 	</table>
 	</form>
+	<%
+	request.setCharacterEncoding("utf-8");
+
+	session.setAttribute("CID", cId);
+	
+	%>
 </div>
 </body>
 </html>

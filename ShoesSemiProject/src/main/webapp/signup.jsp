@@ -59,7 +59,7 @@
 	      <td><input type="text" name="cAddress" size="40"></td>
 	   </tr>
 	   <tr>
-	      <td><input type="submit" value="회원가입하기" style="WIDTH: 210pt; HEIGHT: 20pt"><a href="Main.do">홈으로 돌아가기</a></td>
+	      <td><input type="submit" value="회원가입하기" style="WIDTH: 210pt; HEIGHT: 20pt"><a href="home.jsp">홈으로 돌아가기</a></td>
 	   </tr>
 	</table>
 	</form>

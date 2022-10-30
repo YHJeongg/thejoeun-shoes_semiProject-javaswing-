@@ -13,6 +13,8 @@ public class HLoginSelectCommand implements HCommand {
 		String cId = request.getParameter("cId");
 		String cPw = request.getParameter("cPw");
 		
+		
+		
 		CustomerDao dao = new CustomerDao();
         dao.login(cId, cPw);
 	}

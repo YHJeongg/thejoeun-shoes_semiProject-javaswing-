@@ -70,8 +70,10 @@ public class FrontController extends HttpServlet {
 			System.out.println("login.do");
 		    command = new HLoginSelectCommand();
 		    command.execute(request, response);
+		    
 		    viewPage="home.jsp";
 		break;
+		
 		    
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

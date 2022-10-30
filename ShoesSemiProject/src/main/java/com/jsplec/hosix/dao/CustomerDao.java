@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.sql.DataSource;
 
 import com.jsplec.hosix.dto.CustomerDto;
@@ -68,29 +69,31 @@ public class CustomerDao {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
+		int check = 0;
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			 String query="select cId, cPw from customer where cId='"+scId+"'"+" and cPw= '" +scPw+"' cOutdate IS NULL" ;
+			// String query="select cId, cPw from customer where cId='"+scId+"'"+" and cPw= '" +scPw+"' cOutdate IS NULL" ;
 	         //아이디와 비밀번호를 보겠다.
-			preparedStatement = connection.prepareStatement(query);
 			
-			while(resultSet.next()) {
-				String cId = resultSet.getString(1);
-				String cPw = resultSet.getString(2);
-				resultSet = preparedStatement.executeQuery();
-				dto = new CustomerDto(cId, cPw);
-				if(scId.equals(cId)) {
-					if(scPw.equals(cPw)){
-						
-					}
-				}
-				else {
+		String query = "select count(*) from customer ";
+		String query1 = "where cId = '" + scId + "' and cPw = '" + scPw + "' and cOutdate is null";
+		
+			preparedStatement = connection.prepareStatement(query+query1);
+			
+            if (resultSet.next()) { // true값일때만 가져온다
+				
+				check = resultSet.getInt(1);
+				if(check == 1) {
 					
 				}
+			}else {
 				
 			}
+	
+		
+
 
 
 		} catch (Exception e) {
