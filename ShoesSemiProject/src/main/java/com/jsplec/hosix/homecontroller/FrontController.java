@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jsplec.hosix.command.CustomerOrderCommand;
+import com.jsplec.hosix.command.CustomerOrderInfoCommand;
 import com.jsplec.hosix.command.HCommand;
 import com.jsplec.hosix.command.HMPDeleteCommand;
 import com.jsplec.hosix.command.HMPInsertCommand;
@@ -94,18 +96,38 @@ public class FrontController extends HttpServlet {
 			System.out.println("manage_product_search에 들어왔습니다.");
 			command =new HMPSearchCommand();
 			command.execute(request, response);//넣음
-			viewPage="manage_product.do";//보여주기
+			viewPage="manage_product.jsp";//보여주기
 		
 			break;//입력화면 띄우기
 			
 		case("/HMPproduct_insert.do")://입력하기
 			//****코딩을 시작하겠습니다.
+			
 			command =new HMPInsertCommand();
+			System.out.println("HMPproduct_insert에들어왔습니다.");
 			command.execute(request, response);//넣음
 			viewPage="manage_product.do";//보여주기
 		
 			break;//입력화면 띄우기insert는 생각해보기
+			
+		case("/manage_customer_order.do")://주문 정보
+			System.out.println("manage_customer_order에 들어왔습니다.");
+			command =new CustomerOrderCommand();
+			command.execute(request, response);//넣음
+			viewPage="manage_customer_order.jsp";//보여주기
+			
+			break;
+			
+		case("/manage_customer_info.do")://주문자 정보
+			System.out.println("manage_customer_info에 들어왔습니다.");
+			command =new CustomerOrderInfoCommand();
+			command.execute(request, response);//넣음
+			viewPage="manage_customer_info.jsp";//보여주기
+			
+			break;
 		}
+		
+		
 		
 		RequestDispatcher dispatcher=request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

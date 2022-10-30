@@ -1,61 +1,90 @@
 package com.jsplec.hosix.dto;
 
-import java.sql.Time;
 
 public class HManageOrderDto {
 
 	int pId;// 제품 번호
-	int take_tOrderid;// 발주 받는 번호
-	String pBrand;// 제품 브랜드 명
+	int take_tId;// 발주 받는 번호
+	int take_manufacturer_mfId;// 제조회사 상품 번호
+	String pBrand;// 브랜드 명
 	String pName;// 제품 명
 	int pPrice;// 제품 가격
 	String pCategory;// 제품 카테고리
 	String pSize;// 220~280사이즈
-	Time pStockdate;// 재고 수정 일자
 	int pStock;// 재고 수량
-	String pImage;// 제품 이미지
+	String pStockdate;// 재고 수정 일자
 	String pInformation;// 제품 상세 정보
+
+	// take에 insert하기 위한 field
+	String manager_mId;
+	int tprice;
+	int manufacturer_mfid;
+	int mfid;
+	String mfProductname;
+	String mfSize;
+	// String, int, int where은 hosix123, int, String, String
 
 	public HManageOrderDto() {
 	}
 
-	public HManageOrderDto(int pId, int take_tOrderid, String pBrand, String pName, int pPrice, String pCategory,
-			String pSize, Time pStockdate, int pStock, String pImage, String pInformation) {
+	public HManageOrderDto(int pId, String pBrand, String pName, int pPrice, String pCategory, String pSize, int pStock,
+			String pInformation) {
 		super();
 		this.pId = pId;
-		this.take_tOrderid = take_tOrderid;
 		this.pBrand = pBrand;
 		this.pName = pName;
 		this.pPrice = pPrice;
 		this.pCategory = pCategory;
 		this.pSize = pSize;
-		this.pStockdate = pStockdate;
 		this.pStock = pStock;
-		this.pImage = pImage;
+		this.pInformation = pInformation;
+	}// update로 사용하려는 field
+
+	public HManageOrderDto(int pId, int take_tId, int take_manufacturer_mfId, String pBrand, String pName, int pPrice,
+			String pCategory, String pSize, int pStock, String pStockdate, String pInformation) {
+		super();
+		this.pId = pId;
+		this.take_tId = take_tId;
+		this.take_manufacturer_mfId = take_manufacturer_mfId;
+		this.pBrand = pBrand;
+		this.pName = pName;
+		this.pPrice = pPrice;
+		this.pCategory = pCategory;
+		this.pSize = pSize;
+		this.pStock = pStock;
+		this.pStockdate = pStockdate;
 		this.pInformation = pInformation;
 	}// select로 사용하려는 field
 
-	public HManageOrderDto(int pId, String pBrand, String pName, int pPrice, String pCategory, String pSize, int pStock,
-			String pImage, String pInformation) {
+	public HManageOrderDto(int pId, int take_tId, int take_manufacturer_mfId, String pBrand, String pName, int pPrice,
+			String pCategory, String pSize, int pStock, String pInformation) {
 		super();
 		this.pId = pId;
+		this.take_tId = take_tId;
+		this.take_manufacturer_mfId = take_manufacturer_mfId;
 		this.pBrand = pBrand;
 		this.pName = pName;
 		this.pPrice = pPrice;
 		this.pCategory = pCategory;
 		this.pSize = pSize;
 		this.pStock = pStock;
-		this.pImage = pImage;
 		this.pInformation = pInformation;
-	}// update로 사용하려는 field
+	}//seen에 select로 사용되는 field
 
 	public HManageOrderDto(String pBrand, String pName) {
 		super();
 		this.pBrand = pBrand;
 		this.pName = pName;
-	}//검색을 하기위한 field, select문
+	}// 검색을 하기위한 field, select문
 
-	public HManageOrderDto(int pId, Time pStockdate, int pStock) {
+	public HManageOrderDto(int mfid, String mfProductname, String mfSize) {
+		super();
+		this.mfid = mfid;
+		this.mfProductname = mfProductname;
+		this.mfSize = mfSize;
+	}// take에 insert하기 위한 field
+
+	public HManageOrderDto(int pId, String pStockdate, int pStock) {
 		super();
 		this.pId = pId;
 		this.pStockdate = pStockdate;
@@ -70,12 +99,20 @@ public class HManageOrderDto {
 		this.pId = pId;
 	}
 
-	public int getTake_tOrderid() {
-		return take_tOrderid;
+	public int getTake_tId() {
+		return take_tId;
 	}
 
-	public void setTake_tOrderid(int take_tOrderid) {
-		this.take_tOrderid = take_tOrderid;
+	public void setTake_tId(int take_tId) {
+		this.take_tId = take_tId;
+	}
+
+	public int getTake_manufacturer_mfId() {
+		return take_manufacturer_mfId;
+	}
+
+	public void setTake_manufacturer_mfId(int take_manufacturer_mfId) {
+		this.take_manufacturer_mfId = take_manufacturer_mfId;
 	}
 
 	public String getpBrand() {
@@ -118,14 +155,6 @@ public class HManageOrderDto {
 		this.pSize = pSize;
 	}
 
-	public Time getpStockdate() {
-		return pStockdate;
-	}
-
-	public void setpStockdate(Time pStockdate) {
-		this.pStockdate = pStockdate;
-	}
-
 	public int getpStock() {
 		return pStock;
 	}
@@ -134,12 +163,12 @@ public class HManageOrderDto {
 		this.pStock = pStock;
 	}
 
-	public String getpImage() {
-		return pImage;
+	public String getpStockdate() {
+		return pStockdate;
 	}
 
-	public void setpImage(String pImage) {
-		this.pImage = pImage;
+	public void setpStockdate(String pStockdate) {
+		this.pStockdate = pStockdate;
 	}
 
 	public String getpInformation() {
@@ -149,5 +178,55 @@ public class HManageOrderDto {
 	public void setpInformation(String pInformation) {
 		this.pInformation = pInformation;
 	}
+
+	public String getManager_mId() {
+		return manager_mId;
+	}
+
+	public void setManager_mId(String manager_mId) {
+		this.manager_mId = manager_mId;
+	}
+
+	public int getTprice() {
+		return tprice;
+	}
+
+	public void setTprice(int tprice) {
+		this.tprice = tprice;
+	}
+
+	public int getManufacturer_mfid() {
+		return manufacturer_mfid;
+	}
+
+	public void setManufacturer_mfid(int manufacturer_mfid) {
+		this.manufacturer_mfid = manufacturer_mfid;
+	}
+
+	public int getMfid() {
+		return mfid;
+	}
+
+	public void setMfid(int mfid) {
+		this.mfid = mfid;
+	}
+
+	public String getMfProductname() {
+		return mfProductname;
+	}
+
+	public void setMfProductname(String mfProductname) {
+		this.mfProductname = mfProductname;
+	}
+
+	public String getMfSize() {
+		return mfSize;
+	}
+
+	public void setMfSize(String mfSize) {
+		this.mfSize = mfSize;
+	}
+
+
 
 }
