@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>One Line Board</title>
+<title>회원목록관리 페이지</title>
 
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -38,16 +38,15 @@
 	<%@include file="header.jsp"%>
 	<div>
 		<br> <br>
-		<h1 align="center">Order Product from manufacturer</h1>
+		<h1 align="center">회원 목록</h1>
 		<br> <br>
 
-		<form action="manage_take_search.do">
+		<form action="manage_customer_search.do">
 			<div align="center">
 				검색 선택 : <select name="query">
-					<option value="mfBrand" selected="selected">전체보기</option>
-					<option value="mfBrand">브랜드</option>
-					<option value="mfProductname">상품명</option>
-					<option value="mfSize">사이즈</option>
+					<option value="cId" selected="selected">전체보기</option>
+					<option value="cId">아이디</option>
+					<option value="cName">이름</option>
 				</select>&nbsp;&nbsp;&nbsp;
 				<!-- &nbsp;는 띄어쓰기 -->
 				<input type="text" name="content" size="30"> <input
@@ -60,43 +59,34 @@
 			style="width: 60%; margin: auto;">
 			<thead class="table-success">
 				<tr style="text-align: center;">
-					<th scope="col">seq</th>
-					<th>브랜드</th>
-					<th>상품명</th>
-					<th>카테고리</th>
-					<th>사이즈</th>
-					<th>가격</th>
-					<th width="30">수량</th>
-					<th>발주</th>
+					<th>ID</th>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>주소</th>
+					<th>이메일</th>
+					<th>가입일</th>
+					<th>탈퇴일</th>
+					<th>삭제</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${list}" var="dto">
-					<form action="manage_take_action.do">
+					<form action="manage_customer_delete.do">
 						<tr>
-							<td><input type="hidden" name="mfId" value="${dto.mfId}">${dto.mfId}</td>
-							<td><input type="hidden" name="mfBrand"
-								value="${dto.mfBrand}">${dto.mfBrand}</td>
-							<td><input type="hidden" name="mfProductname"
-								value="${dto.mfProductname}">${dto.mfProductname}</td>
-							<td><input type="hidden" name="mfCategory"
-								value="${dto.mfCategory}">${dto.mfCategory}</td>
-							<td><input type="hidden" name="mfSize" value="${dto.mfSize}">${dto.mfSize}</td>
-							<td><input type="hidden" name="mfPrice"
-								value="${dto.mfPrice}">${dto.mfPrice}</td>
-							<td align="center" width="100"><input type="text"
-								name="tQty" size="5"></td>
-							<td align="center" width="100"><input type="submit"
-								value="  발주  " size="40"
+							<td><input type="hidden" name="cId" value="${dto.cId}">${dto.cId}</td>
+							<td><input type="hidden" name="cName" value="${dto.cName}">${dto.cName}</td>
+							<td><input type="hidden" name="cTelno" value="${dto.cTelno}">${dto.cTelno}</td>
+							<td><input type="hidden" name="cEmail" value="${dto.cEmail}">${dto.cEmail}</td>
+							<td><input type="hidden" name="cAddress" value="${dto.cAddress}">${dto.cAddress}</td>
+							<td><input type="hidden" name="cIndate" value="${dto.cIndate}">${dto.cIndate}</td>
+							<td><input type="hidden" name="cOutdate" value="${dto.cOutdate}">${dto.cOutdate}</td>
+							<td align="center" width="100"><input type="submit"	value="  삭제  " size="40"
 								style="background-color: rgb(213, 230, 222); color: red; font-weight: bold; border-style: double;"></td>
 						</tr>
 					</form>
 				</c:forEach>
 			</tbody>
 			<tfoot>
-				<tr>
-					<td colspan="8"><a href="write_view.do">-------</a></td>
-				</tr>
 			</tfoot>
 		</table>
 	</div>
