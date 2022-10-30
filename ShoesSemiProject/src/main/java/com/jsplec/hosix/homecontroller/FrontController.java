@@ -13,6 +13,7 @@ import com.jsplec.hosix.command.HCategoryPListCommand;
 import com.jsplec.hosix.command.HCommand;
 import com.jsplec.hosix.command.HMypageModifyCommand;
 import com.jsplec.hosix.command.HPListCommand;
+import com.jsplec.hosix.command.HProductdetailCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -54,16 +55,6 @@ public class FrontController extends HttpServlet {
         String uri = request.getRequestURI();
         String conPath = request.getContextPath();
         String com = uri.substring(conPath.length());
-        
-        switch(com) {
-		// 전체 내용 검색
-		case("/mypage_modify.do"):
-			command = new HMypageModifyCommand();
-			command.execute(request, response);
-			viewPage = "mypage_info.jsp";
-			break;
-			
-        }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
         dispatcher.forward(request, response);

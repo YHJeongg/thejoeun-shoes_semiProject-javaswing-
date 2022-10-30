@@ -19,7 +19,7 @@ public class OrdersDao {
 	public OrdersDao() {
 		try {
 			Context context = new InitialContext();
-			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mvc");
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/shoesproject");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -28,28 +28,29 @@ public class OrdersDao {
 	// M
 	
 	// Show Detail page 
-	public OrdersDto contentView(String spId) {
-		OrdersDto dto = null;
+	public ProductListDto contentView(int spId) {
+		ProductListDto dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		
+		System.out.println(spId);
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select pBrand, pName, pPrice, pStock from prodcut where pId = ?";
+			String query = "select pId, pBrand, pName, pPrice, pCategory, pInformation, pStock from product where pId = " + spId ;
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, Integer.parseInt(spId));
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
 				String pBrand = resultSet.getString("pBrand");
 				String pName = resultSet.getString("pName");
+				String pCategory = resultSet.getString("pCategory");
+				String pInformation = resultSet.getString("pInformation");
 				int pPrice = resultSet.getInt("pPrice");
 				int pStock = resultSet.getInt("pStock");
 				int pId = resultSet.getInt("pId");
 				
-				dto = new ProductListDto();
+				dto = new ProductListDto(pId, pBrand, pName, pPrice, pCategory, pStock, pInformation);
 			}
 			
 		}catch(Exception e) {
@@ -67,6 +68,35 @@ public class OrdersDao {
 	} // content_view
 	
 	// Insert Order button
-	
+	public void buyShoes() {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		//int returnValue=0;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "insert into orders (oOrderid, customer_cId, product_pId, cart_cSeq, oAddress, oPrice, oQty, oDate) values (?, ?, ?, ?, ?, ?, ?, now())";
+			preparedStatement = connection.prepareStatement(query);
+//			preparedStatement.setString(1, bName);
+//			preparedStatement.setString(2, bTitle);
+//			preparedStatement.setString(3, bContent);
+//			
+			//returnValue =preparedStatement.executeUpdate();
+			preparedStatement.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//return returnValue;
+	} // buyShoes
 	
 } // End
