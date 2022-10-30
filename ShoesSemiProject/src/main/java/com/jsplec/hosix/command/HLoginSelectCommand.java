@@ -21,9 +21,10 @@ public class HLoginSelectCommand implements HCommand {
 
 		CustomerDao dao = new CustomerDao();
 		check = dao.login(cId, cPw);
-
+		
 		if (check == 1) {
 			page = "index.jsp";
+			request.setAttribute("cId", cId);
 		} else {
 			page = "login_fail.jsp";
 		}

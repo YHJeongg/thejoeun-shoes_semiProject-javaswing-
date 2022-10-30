@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.jsplec.hosix.command.HCommand;
 import com.jsplec.hosix.command.HLoginSelectCommand;
@@ -59,6 +59,8 @@ public class FrontController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		System.out.println(com);
 		
+		HttpSession session = request.getSession(); // *******session
+		
 		switch(com) {
 		case("/signup.do"):
 			System.out.println("signup.do");
@@ -71,6 +73,9 @@ public class FrontController extends HttpServlet {
 			System.out.println("login.do");
 		    command = new HLoginSelectCommand();
 		    command.execute(request, response);
+		    session.setAttribute("cId", request.getAttribute("cId")); // 로그아웃OR화면종료시 인벨리드?해주기
+		    //
+		    System.out.println(session.getAttribute("cId"));
 		break;
 		
 		}
