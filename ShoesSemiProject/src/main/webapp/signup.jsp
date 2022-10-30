@@ -50,7 +50,7 @@
 	      <td>이메일</td>
 	   </tr>
 	   <tr>
-	      <td><input type="text" name="cTelno" size="40"></td>
+	      <td><input type="text" name="cEmail" size="40"></td>
 	   </tr>
 	   <tr>
 	      <td>주소</td>

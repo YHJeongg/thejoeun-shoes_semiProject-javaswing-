@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import javax.sql.DataSource;
 
-import com.jsplec.hosix.dto.CustomerDto;
+import org.apache.catalina.connector.Response;
 
 
 public class CustomerDao {
@@ -64,32 +64,45 @@ public class CustomerDao {
 		
 		
 	}//signup
-	public void login(String scId, String scPw) {
-	    CustomerDto dto = null;
+	
+	public int login(String scId, String scPw) {
+	    
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		int check = 0;
+		//String page = new String();
+		
 		
 		try {
 			connection = dataSource.getConnection();
 			
-			// String query="select cId, cPw from customer where cId='"+scId+"'"+" and cPw= '" +scPw+"' cOutdate IS NULL" ;
+			//String query="select cId, cPw from customer where cId='"+scId+"'"+" and cPw= '" +scPw+"' cOutdate IS NULL" ;
 	         //아이디와 비밀번호를 보겠다.
 			
 		String query = "select count(*) from customer ";
 		String query1 = "where cId = '" + scId + "' and cPw = '" + scPw + "' and cOutdate is null";
+		Response response = new Response();
 		
 			preparedStatement = connection.prepareStatement(query+query1);
 			
             if (resultSet.next()) { // true값일때만 가져온다
 				
 				check = resultSet.getInt(1);
-				if(check == 1) {
-					
-				}
-			}else {
-				
+				System.out.println(check);
+				//거짓일때
+//				if(check == 1) {
+//					//response.sendRedirect("login.jsp");
+//					page = "login.do";
+//					System.out.println("login!");
+//					
+//					//login_fail.do 
+//				}else {
+//					//response.sendRedirect("login_fail.jsp");
+//					page = "login_fail.do";
+//					System.out.println("f");
+//					
+//				}
 			}
 	
 		
@@ -111,5 +124,9 @@ public class CustomerDao {
 			}
 			
 		}
+		return check;
+		
 	} //login
+	
+
 }

@@ -8,6 +8,12 @@
 <meta charset="UTF-8">
 <title>Login AHNSUBIN</title>
 </head>
+<%
+	request.setCharacterEncoding("utf-8");
+
+    
+	
+	%>
 <body>
 <div style="text-align: center;">
 <br><br>
@@ -29,12 +35,7 @@
 	</tr>
 	</table>
 	</form>
-	<%
-	request.setCharacterEncoding("utf-8");
-
-	session.setAttribute("CID", cId);
 	
-	%>
 </div>
 </body>
 </html>
