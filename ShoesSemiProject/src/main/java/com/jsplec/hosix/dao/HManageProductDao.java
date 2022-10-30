@@ -246,27 +246,37 @@ public class HManageProductDao {
 				resultSet=preparedStatement.executeQuery();
 		 * */
 		
-		public void insert_take(String mfid, String mfProductname, String mfSize) {
+		public void insert_take(String mfProductname) {
 			Connection connection = null;
 			PreparedStatement preparedStatement = null;
+			PreparedStatement preparedStatement2 = null;
 			
 			
 			try {
 				System.out.println("insert_take try문까지 들어왔습니다.");
 				connection = dataSource.getConnection();
-				//insert into shoesproject.take(manager_mId, tprice,manufacturer_mfid)
-				//select mId, mfprice, mfid from shoesproject.manager,shoesproject.manufacturer where mId='hosix123' and mfid=1 and (mfProductname='나이키 에어' and mfSize=240);
-				String query = "insert into take(manager_mId, tprice,manufacturer_mfid) ";
-				String query2="select mId, mfprice, mfid from manager,manufacturer where mId='hosix' and mfid=? and (mfProductname=? and mfSize=?) ";
+				
+				/*insert into shoesproject.take(manager_mId, manufacturer_mfid)
+				select mId, mfid from shoesproject.manager,shoesproject.manufacturer 
+				where mId='admin' and (mfProductname='가젤' and mfSize=270);*/
+				
+//				String query = "insert into take(manager_mId, manufacturer_mfid) ";
+//				String query2="select mId, mfid from manager,manufacturer where mId='admin' and (mfProductname=? and mfSize=?) ";
+				
+				System.out.println(mfProductname);
+				String query = "insert into shoesproject.take(  manager_mId,manufacturer_mfid)"
+						+ "select mId, mfid from shoesproject.manager,shoesproject.manufacturer "
+						+ "where mId='admin' and (mfProductname=?); ";
+				String query2="update take set tdate=now(), tqty=1 where tid=(select*from(select max(tid) from take)as take) " ;
+				//update take set tdate=now(), tqty=1 where tid=(select*from(select max(tid) from take)as take);
 				System.out.println("insert_take query문까지 들어왔습니다.");
 				
-				preparedStatement = connection.prepareStatement(query+query2);
-				preparedStatement.setString(1, mfid);
-				preparedStatement.setString(2, mfProductname);
-				preparedStatement.setString(3, mfSize);
-
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement2 = connection.prepareStatement(query2);
+				preparedStatement.setString(1, mfProductname);
 				
 				preparedStatement.executeUpdate();
+				preparedStatement2.executeUpdate();
 //				returnValue =  preparedStatement.executeUpdate();
 						
 			}catch(Exception e) {
