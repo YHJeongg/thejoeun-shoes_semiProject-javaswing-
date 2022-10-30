@@ -1,15 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8">
-<title>Product Detail</title>
-</head>
-<html lang="en">
-
-<head>
-    <title>Zay Shop - Product Detail Page</title>
+    <title>HosiX Shop - Product Detail Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -68,7 +62,8 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Card image cap" id="product-detail">
+                        
                     </div>
                     <div class="row">
                         <!--Start Controls-->
@@ -89,17 +84,17 @@ https://templatemo.com/tm-559-zay-shop
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_01.jpg" alt="Product Image 1">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 1">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_02.jpg" alt="Product Image 2">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 2">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_03.jpg" alt="Product Image 3">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 3">
                                             </a>
                                         </div>
                                     </div>
@@ -111,17 +106,17 @@ https://templatemo.com/tm-559-zay-shop
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_04.jpg" alt="Product Image 4">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 4">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_05.jpg" alt="Product Image 5">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 5">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_06.jpg" alt="Product Image 6">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 6">
                                             </a>
                                         </div>
                                     </div>
@@ -133,17 +128,17 @@ https://templatemo.com/tm-559-zay-shop
                                     <div class="row">
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_07.jpg" alt="Product Image 7">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 7">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_08.jpg" alt="Product Image 8">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 8">
                                             </a>
                                         </div>
                                         <div class="col-4">
                                             <a href="#">
-                                                <img class="card-img img-fluid" src="assets/img/product_single_09.jpg" alt="Product Image 9">
+                                                <img class="card-img img-fluid" src="assets/img/product/${productDetail.pBrand}/${productDetail.pName}.png" alt="Product Image 9">
                                             </a>
                                         </div>
                                     </div>
@@ -167,42 +162,44 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2">상품이름란</h1>
-                            <p class="h3 py-2">₩상품금액란</p>
+                            <h1 class="h2">${productDetail.pName}</h1>
+                            <p class="h3 py-2"><fmt:formatNumber value="${productDetail.pPrice}" groupingUsed="true" /> 원</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>브랜드명 :</h6>
-                                </li>
-                                <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Easy Wear</strong></p>
+                                    <h6>브랜드명 : ${productDetail.pBrand}</h6>
                                 </li>
                             </ul>
 
-                            <h6>상품설명:</h6>
-                            <p>상품설명을 작성하시오.</p>
+                            <h6>상품설명: </h6>
+                            <p>${productDetail.pInformation}</p>
 
-                            <form action="" method="GET">
+                            <form action="insertCart.do" method="post">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
-                                            <li class="list-inline-item">Size :
+                                            <li class="list-inline-item"> <b>Size :</b>
                                                 <input type="hidden" name="productSize" id="product-size" value="S">
                                             </li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">220</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">230</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">240</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">250</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">260</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">270</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">280</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success btn-size">${productDetail.pSize}</span></li>
                                         </ul>
                                     </div>
+                                    <p>
+                                       <div class="col-auto">
+                                        <ul class="list-inline pb-3">
+                                            <li class="list-inline-item text-right">
+                                               <b>구매가능 수량 : ${productDetail.pStock}</b>
+                                                <input type="hidden" name="productQuanity" id="product-quanity" value="1">
+                                            </li>
+                                     </ul>
+                                    </div>
+                                    </p>
+                                    <p>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                                수량
-                                                <input type="hidden" name="productQuanity" id="product-quanity" value="1">
+                                                <b>수량 :</b>
+                                                <input type="hidden" name="cQty" id="product-quanity" value="1">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
@@ -210,12 +207,13 @@ https://templatemo.com/tm-559-zay-shop
                                         </ul>
                                     </div>
                                 </div>
+                                <input type="hidden" name="product_pId" value='<%=request.getParameter("pId")%>'>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">구매</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="insertbuy" value="buy" onclick="javascript: form.action='Order.do'">구매</button>
                                     </div>
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">장바구니 담기</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="insertcart" value="addtocard" onclick="javascript: form.action='insertCart.do'">장바구니 담기</button>
                                     </div>
                                 </div>
                             </form>

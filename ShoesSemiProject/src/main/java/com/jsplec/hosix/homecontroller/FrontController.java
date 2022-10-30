@@ -22,10 +22,11 @@ import com.jsplec.hosix.command.HMPSeenCommand;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet("*.do")//do로 끝나는 모든 것은 이쪽으로 올 수 있게 해주는 역할
+ 
+@WebServlet("*.do")
 public class FrontController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,7 +41,7 @@ public class FrontController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("doGet");
-		actionDo(request,response);//get이든 post이든 actionDo로 들어올 수 있도록 선언
+		actionDo(request,response);
 		
 	}
 
@@ -55,14 +56,14 @@ public class FrontController extends HttpServlet {
 	}
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("actionDo");
-		request.setCharacterEncoding("utf-8");//한글 처리를 위한 선언
+		request.setCharacterEncoding("utf-8");
 		
 		String viewPage=null;
-		HCommand command=null;//BCommand를 가져온다
+		HCommand command=null;
 		
-		String uri=request.getRequestURI();//8080포트번호 뒤에 있는 주소를 가져오는 역할을 함
-		String conPath=request.getContextPath();//프로젝트 폴더명을 보여줌
-		String com=uri.substring(conPath.length());//입력한 값만 받아서 보여줌
+		String uri=request.getRequestURI();
+		String conPath=request.getContextPath();
+		String com=uri.substring(conPath.length());
 	
 		RequestDispatcher dispatcher=request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
