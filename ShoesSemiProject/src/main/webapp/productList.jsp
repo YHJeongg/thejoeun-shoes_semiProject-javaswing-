@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HosiX</title>
+    <title>HosiX 상품페이지</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -77,6 +77,12 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-md-6">
+                    <c:if test='<%=request.getParameter("pCategory") != null%>'>
+                    	<h4><b><%=request.getParameter("pBrand")%> - <%=request.getParameter("pCategory")%></b></h4>
+                    </c:if>
+                    <c:if test='<%=request.getParameter("pCategory") == null%>'>
+                    	<h4><b>ALL</b></h4>
+                    </c:if>
                     </div>
                     <div class="col-md-6 pb-4">
                         <div class="d-flex">
@@ -104,7 +110,7 @@
                             <div class="card-body" align="center">
                             	<a href="shop-single.html" class="h3 text-decoration-none">${dto.pBrand}</a><br>
                                 <a href="shop-single.html" class="h3 text-decoration-none">${dto.pName}</a>
-                                <p class="text-center mb-0"><fmt:formatNumber value="${dto.pPrice}" groupingUsed="true" />원</p>
+                                <p class="text-center mb-0"><fmt:formatNumber value="${dto.pPrice}" groupingUsed="true" /> 원</p>
                             </div>
                         </div>
                     </div>

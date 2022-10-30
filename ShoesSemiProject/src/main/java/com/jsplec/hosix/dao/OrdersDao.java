@@ -33,7 +33,7 @@ public class OrdersDao {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
-		System.out.println(spId);
+
 		try {
 			connection = dataSource.getConnection();
 			

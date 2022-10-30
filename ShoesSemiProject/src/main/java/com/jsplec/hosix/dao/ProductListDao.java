@@ -23,7 +23,7 @@ public class ProductListDao {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } // CustomerDao
+    } 
 
     // 전체 검색
     public ArrayList<ProductListDto> list(String ppName) {
@@ -69,9 +69,9 @@ public class ProductListDao {
             }
         }
         return dtos;
-    } // list_view
+    } 
 
-    // 전체 검색
+    // category 검색 리스트
     public ArrayList<ProductListDto> categorylist(String ppCategory, String ppBrand) {
         ArrayList<ProductListDto> dtos = new ArrayList<ProductListDto>();
         Connection connection = null;
@@ -111,6 +111,6 @@ public class ProductListDao {
             }
         }
         return dtos;
-    } // list_view
+    } 
 
 }

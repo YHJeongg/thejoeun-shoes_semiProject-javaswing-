@@ -3,57 +3,89 @@ package com.jsplec.hosix.dto;
 import java.security.Timestamp;
 
 public class CartDto {
-
-	// F
-	int cSeq;
+    
+	String customer_cId;
+	int product_pId;
 	int cQty;
 	Timestamp cDate;
+	String pName;
+	int pPrice;
+	int pSize;
+	String pBrand;
 	
-	
-	// C
-	public CartDto() {
-		// TODO Auto-generated constructor stub
-	}
-	
+    public CartDto(String customer_cId, int product_pId, int cQty, String pName, int pPrice, String pBrand) {
+        super();
+        this.customer_cId = customer_cId;
+        this.product_pId = product_pId;
+        this.cQty = cQty;
+        this.pName = pName;
+        this.pPrice = pPrice;
+        this.pBrand = pBrand;
+    }
 
-	public CartDto(int cSeq, int cQty, Timestamp cDate) {
-		super();
-		this.cSeq = cSeq;
-		this.cQty = cQty;
-		this.cDate = cDate;
-	}
+    public String getCustomer_cId() {
+        return customer_cId;
+    }
 
+    public void setCustomer_cId(String customer_cId) {
+        this.customer_cId = customer_cId;
+    }
 
-	// M
+    public int getProduct_pId() {
+        return product_pId;
+    }
 
-	public int getcSeq() {
-		return cSeq;
-	}
+    public void setProduct_pId(int product_pId) {
+        this.product_pId = product_pId;
+    }
 
+    public int getcQty() {
+        return cQty;
+    }
 
-	public void setcSeq(int cSeq) {
-		this.cSeq = cSeq;
-	}
+    public void setcQty(int cQty) {
+        this.cQty = cQty;
+    }
 
+    public Timestamp getcDate() {
+        return cDate;
+    }
 
-	public int getcQty() {
-		return cQty;
-	}
+    public void setcDate(Timestamp cDate) {
+        this.cDate = cDate;
+    }
 
+    public String getpName() {
+        return pName;
+    }
 
-	public void setcQty(int cQty) {
-		this.cQty = cQty;
-	}
+    public void setpName(String pName) {
+        this.pName = pName;
+    }
 
+    public int getpPrice() {
+        return pPrice;
+    }
 
-	public Timestamp getcDate() {
-		return cDate;
-	}
+    public void setpPrice(int pPrice) {
+        this.pPrice = pPrice;
+    }
 
+    public int getpSize() {
+        return pSize;
+    }
 
-	public void setcDate(Timestamp cDate) {
-		this.cDate = cDate;
-	}
+    public void setpSize(int pSize) {
+        this.pSize = pSize;
+    }
+
+    public String getpBrand() {
+        return pBrand;
+    }
+
+    public void setpBrand(String pBrand) {
+        this.pBrand = pBrand;
+    }
 	
 	
 }
