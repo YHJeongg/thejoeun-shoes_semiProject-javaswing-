@@ -81,7 +81,7 @@ public class ProductListDao {
         try {
             connection = dataSource.getConnection();
 
-            String query = "select pId, pBrand, pName, pPrice, pCategory from product where pCategory = '" + ppCategory + "' and pBrand = '" + ppBrand + "'";
+            String query = "select DISTINCT pId,pName, pBrand, pPrice, pCategory from product where pCategory = '" + ppCategory + "' and pBrand = '" + ppBrand + "'";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             
