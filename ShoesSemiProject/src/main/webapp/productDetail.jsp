@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <head>
     <title>HosiX Shop - Product Detail Page</title>
@@ -161,8 +162,8 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h2"><b>${productDetail.pName}</b></h1>
-                            <p class="h3 py-2">${productDetail.pPrice}원</p>
+                            <h1 class="h2">${productDetail.pName}</h1>
+                            <p class="h3 py-2"><fmt:formatNumber value="${productDetail.pPrice}" groupingUsed="true" /> 원</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>브랜드명 : ${productDetail.pBrand}</h6>
@@ -172,7 +173,7 @@ https://templatemo.com/tm-559-zay-shop
                             <h6>상품설명: </h6>
                             <p>${productDetail.pInformation}</p>
 
-                            <form action="" method="GET">
+                            <form action="insertCart.do" method="post">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
@@ -197,8 +198,8 @@ https://templatemo.com/tm-559-zay-shop
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
-                                               <b>수량 선택 :</b>
-                                                <input type="hidden" name="productQuanity" id="product-quanity" value="1">
+                                                <b>수량 :</b>
+                                                <input type="hidden" name="cQty" id="product-quanity" value="1">
                                             </li>
                                             <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
@@ -206,17 +207,13 @@ https://templatemo.com/tm-559-zay-shop
                                         </ul>
                                     </div>
                                 </div>
-                                </p>
+                                <input type="hidden" name="product_pId" value='<%=request.getParameter("pId")%>'>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                    <form action="orderpage.jsp" method="post">
-                                        <button type="submit" class="btn btn-success btn-lg" name="insertorder" value="buy">구매</button>
-                                        </form>
+                                        <button type="submit" class="btn btn-success btn-lg" name="insertbuy" value="buy" onclick="javascript: form.action='Order.do'">구매</button>
                                     </div>
                                     <div class="col d-grid">
-                                     <form action="cart.jsp" method="post">
-                                        <button type="submit" class="btn btn-success btn-lg" name="insertcart" value="addtocard">장바구니 담기</button>
-                                     </form>
+                                        <button type="submit" class="btn btn-success btn-lg" name="insertcart" value="addtocard" onclick="javascript: form.action='insertCart.do'">장바구니 담기</button>
                                     </div>
                                 </div>
                             </form>

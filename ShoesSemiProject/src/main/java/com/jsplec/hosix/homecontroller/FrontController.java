@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jsplec.hosix.command.HCommand;
-import com.jsplec.hosix.command.HPListCommand;
-import com.jsplec.hosix.command.HProductdetailCommand;
+import com.jsplec.hosix.command.HCartInsertCommand;
+import com.jsplec.hosix.command.HCartListCommand;
+import com.jsplec.hosix.command.HCategoryPListCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -19,7 +19,7 @@ import com.jsplec.hosix.command.HProductdetailCommand;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,31 +29,36 @@ public class FrontController extends HttpServlet {
     }
 
     /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // TODO Auto-generated method stub
         actionDo(request, response);
     }
 
     /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // TODO Auto-generated method stub
         actionDo(request, response);
     }
-    
-    private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    private void actionDo(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        
+
         String viewPage = null;
         HCommand command = null;
-        
+
         String uri = request.getRequestURI();
         String conPath = request.getContextPath();
         String com = uri.substring(conPath.length());
-        
+
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
         dispatcher.forward(request, response);
     }
