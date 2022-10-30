@@ -9,7 +9,7 @@ public class ProductListDto {
     String pName;
     int pPrice;
     String pCategory;
-    String psize;
+    String pSize;
     int pStock;
     String pInformation;
     Timestamp pStockdate;
@@ -28,8 +28,7 @@ public class ProductListDto {
     }
     
     
-    
-    public ProductListDto(int pId, String pBrand, String pName, int pPrice, String pCategory, int pStock,
+    public ProductListDto(int pId, String pBrand, String pName, int pPrice, String pCategory, String pSize, int pStock,
     		String pInformation) {
     	super();
     	this.pId = pId;
@@ -37,12 +36,14 @@ public class ProductListDto {
     	this.pName = pName;
     	this.pPrice = pPrice;
     	this.pCategory = pCategory;
+    	this.pSize = pSize;
     	this.pStock = pStock;
     	this.pInformation = pInformation;
     }
     
     
-    // M
+    
+	// M
 	public int getpId() {
 		return pId;
 	}
@@ -82,12 +83,12 @@ public class ProductListDto {
 		this.pCategory = pCategory;
 	}
 
-	public String getPsize() {
-		return psize;
+	public String getpSize() {
+		return pSize;
 	}
 
-	public void setPsize(String psize) {
-		this.psize = psize;
+	public void setpSize(String psize) {
+		this.pSize = psize;
 	}
 
 	public int getpStock() {

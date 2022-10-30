@@ -2,13 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Product Detail</title>
-</head>
-<html lang="en">
-
 <head>
     <title>HosiX Shop - Product Detail Page</title>
     <meta charset="utf-8">
@@ -188,15 +181,19 @@ https://templatemo.com/tm-559-zay-shop
                                             <li class="list-inline-item"> <b>Size :</b>
                                                 <input type="hidden" name="productSize" id="product-size" value="S">
                                             </li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">220</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">230</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">240</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">250</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">260</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">270</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success btn-size">280</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success btn-size">${productDetail.pSize}</span></li>
                                         </ul>
                                     </div>
+                                    <p>
+                                       <div class="col-auto">
+                                        <ul class="list-inline pb-3">
+                                            <li class="list-inline-item text-right">
+                                               <b>구매가능 수량 : ${productDetail.pStock}</b>
+                                                <input type="hidden" name="productQuanity" id="product-quanity" value="1">
+                                            </li>
+                                     </ul>
+                                    </div>
+                                    </p>
                                     <p>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
