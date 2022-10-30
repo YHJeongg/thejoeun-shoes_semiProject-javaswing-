@@ -19,7 +19,7 @@
 <br><br>
 	&nbsp;&nbsp;&nbsp;<h2><a href="home.jsp">Hosix Shoes</a></h2>&nbsp;&nbsp;&nbsp;
 	<h3>LOGIN</h3>
-	<form action="login.do" method="post" name="Login">
+	<form action="login.do" method="post">
 	<table style="margin-left: auto; margin-right: auto;">
 	<tr>
 	   <td><input type="text" placeholder="Login" size="30" name="cId"></td>

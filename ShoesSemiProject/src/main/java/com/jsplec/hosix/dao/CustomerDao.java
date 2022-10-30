@@ -65,49 +65,27 @@ public class CustomerDao {
 		
 	}//signup
 	
-	public int login(String scId, String scPw) {
-	    
+	public int login(String cId, String cPw) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		int check = 0;
-		//String page = new String();
-		
 		
 		try {
 			connection = dataSource.getConnection();
-			
 			//String query="select cId, cPw from customer where cId='"+scId+"'"+" and cPw= '" +scPw+"' cOutdate IS NULL" ;
 	         //아이디와 비밀번호를 보겠다.
 			
 		String query = "select count(*) from customer ";
-		String query1 = "where cId = '" + scId + "' and cPw = '" + scPw + "' and cOutdate is null";
-		Response response = new Response();
+		String query1 = "where cId = '" + cId + "' and cPw = '" + cPw + "' and cOutdate is null";
 		
 			preparedStatement = connection.prepareStatement(query+query1);
-			
+			resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) { // true값일때만 가져온다
 				
 				check = resultSet.getInt(1);
-				System.out.println(check);
-				//거짓일때
-//				if(check == 1) {
-//					//response.sendRedirect("login.jsp");
-//					page = "login.do";
-//					System.out.println("login!");
-//					
-//					//login_fail.do 
-//				}else {
-//					//response.sendRedirect("login_fail.jsp");
-//					page = "login_fail.do";
-//					System.out.println("f");
-//					
-//				}
+
 			}
-	
-		
-
-
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,4 +107,4 @@ public class CustomerDao {
 	} //login
 	
 
-}
+} // End

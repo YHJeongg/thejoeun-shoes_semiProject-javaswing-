@@ -2,6 +2,8 @@ package com.jsplec.hosix.command;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,27 +16,24 @@ public class HLoginSelectCommand implements HCommand {
 		// TODO Auto-generated method stub
 		String cId = request.getParameter("cId");
 		String cPw = request.getParameter("cPw");
-
-		String page = new String();
+		String page;
+		int check;
 
 		CustomerDao dao = new CustomerDao();
+		check = dao.login(cId, cPw);
 
-		int check = dao.login(cId, cPw);
-		System.out.println("login/");
-
+		if (check == 1) {
+			page = "index.jsp";
+		} else {
+			page = "login_fail.jsp";
+		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		try {
-			if (check == 1) {
-				response.sendRedirect("login.jsp");
-				// page = "login.do";
-				System.out.println("login!");
-
-				// login_fail.do
-			} else {
-				response.sendRedirect("login_fail.jsp");
-				// page = "login_fail.do";
-				System.out.println("f");
-
-			}
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

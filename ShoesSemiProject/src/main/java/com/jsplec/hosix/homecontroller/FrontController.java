@@ -66,18 +66,15 @@ public class FrontController extends HttpServlet {
 		    command.execute(request, response);
 		    viewPage="login.jsp";
 		break;
+		
 		case("/login.do"):
 			System.out.println("login.do");
 		    command = new HLoginSelectCommand();
 		    command.execute(request, response);
-		    viewPage="home.jsp";
-		break;
-		case("/login_fail.do"):
-			viewPage="login_fail.jsp";
 		break;
 		
-		    
 		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
