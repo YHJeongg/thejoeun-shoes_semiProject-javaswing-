@@ -23,10 +23,12 @@ public class HLoginSelectCommand implements HCommand {
 		check = dao.login(cId, cPw);
 		
 		if (check == 1) {
-			page = "index.jsp";
+			//page = "index.jsp";
+			page = "login_check.do";
 			request.setAttribute("cId", cId);
 		} else {
-			page = "login_fail.jsp";
+			//page = "login_fail.jsp";
+			page = "login_fail.do";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);

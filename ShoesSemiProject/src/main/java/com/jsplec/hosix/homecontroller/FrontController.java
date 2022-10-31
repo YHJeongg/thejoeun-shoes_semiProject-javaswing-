@@ -21,31 +21,36 @@ import com.jsplec.hosix.command.HSignupInsertCommand;
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public FrontController() {
-    	super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public FrontController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("doGet");
-		actionDo(request, response);}
+		actionDo(request, response);
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("doPost");
 		actionDo(request, response);
 	}
-	
+
 	private void actionDo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("actionDo");
@@ -58,28 +63,43 @@ public class FrontController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		System.out.println(com);
-		
+
 		HttpSession session = request.getSession(); // *******session
-		
-		switch(com) {
-		case("/signup.do"):
+
+		switch (com) {
+		case ("/signup.do"):
 			System.out.println("signup.do");
 			command = new HSignupInsertCommand();
-		    command.execute(request, response);
-		    viewPage="login.jsp";
-		break;
-		
-		case("/login.do"):
+			command.execute(request, response);
+			viewPage = "login.jsp";
+			break;
+
+		case ("/login.do"):
 			System.out.println("login.do");
-		    command = new HLoginSelectCommand();
-		    command.execute(request, response);
-		    session.setAttribute("cId", request.getAttribute("cId")); // 로그아웃OR화면종료시 인벨리드?해주기
-		    //
-		    System.out.println(session.getAttribute("cId"));
-		break;
-		
+			command = new HLoginSelectCommand();
+			command.execute(request, response);
+			// session.setAttribute("cId", request.getAttribute("cId")); // 로그아웃OR화면종료시
+			// 인벨리드?해주기
+			//
+			// System.out.println(session.getAttribute("cId"));
+			break;
+
+		case ("/login_check.do"):
+			session.setAttribute("cId", request.getAttribute("cId"));
+			System.out.println(session.getAttribute("cId"));
+			viewPage = "index.jsp";
+			break;
+
+		case ("/login_fail.do"):
+			viewPage = "login_fail.jsp";
+			break;
+
+		case ("/logout.do"):
+			System.out.println("logout");
+			session.invalidate();
+
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
