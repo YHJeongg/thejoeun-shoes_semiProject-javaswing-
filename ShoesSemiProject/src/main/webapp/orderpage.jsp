@@ -27,17 +27,67 @@ TemplateMo 559 Zay Shop
 https://templatemo.com/tm-559-zay-shop
 
 -->
-</head>
 
+<script type="text/javascript">
+	function checkForm() {
+		alert("주문이 완료되었습니다. 감사합니다.")
+				location.href= "index.jsp?page="
+	}
+</script>
+</head>
 <body>
+<%
+int num1 = Integer.parseInt(request.getParameter("pPrice"));
+int num2 = Integer.parseInt(request.getParameter("cQty"));
+int mul = num1*num2;
+%>
     <!-- Start Top Nav -->
 <%@include file = "header.jsp" %>
     <!-- Close Top Nav -->
 
 	<h2 align="center"><b>주문하기</b></h2>
- 
- 
- 
+ 		<div class="container py-5" align="center">
+		<div class="col-lg-10">
+			<form action="insertOrder.do" method="get"> 
+			<table class="table table-hover">
+			<tr align="center">
+			<td><input type="hidden" name="customer_cId"  id="cId" value='<%=request.getParameter("cId")%>'></td>
+			<td><input type="hidden" name="product_pId" id="pId" value='<%=request.getParameter("pId")%>'></td>
+			</tr>
+			<tr>
+				<td align="right">이름 :</td> <td>${orderpage.cName} </td>
+			</tr>
+			<tr>
+				<td align="right">전화번호 :</td> <td>${orderpage.cTelno}</td>
+			</tr>
+			<tr>
+				<td align="right">배송지 : </td>
+				<td><input type="text" name="oAddress" id="oAddress" size="50"></td>
+			</tr>
+			<tr>
+				<td align="right">상품명 :</td> <td>${orderpage.pName}</td>
+			</tr>
+			<tr> 
+				<td align="right">사이즈 :</td> <td>${orderpage.pSize}</td>
+			</tr>
+			<tr>
+				<td align="right">상품금액 :</td> <td>${orderpage.pPrice}</td>
+			</tr>
+			<tr>
+				<td align="right">수량 :</td> <td><%=request.getParameter("cQty") %>개
+				<input type="hidden" name="cQty" value='<%=request.getParameter("cQty")%>'> </td>
+			</tr>
+			<tr>
+				<td align="right">총금액 :</td> <td><%=mul%>
+				<input type="hidden" name="pPrice" value='<%=request.getParameter("pPrice")%>'></td>
+			</tr>
+
+		
+		</table>
+		<button class="btn btn-success btn-lg px-3" type="submit" name="buy" value="구매하기" onclick="checkForm()">구매</button>
+	</form>
+ </div>
+ </div>
  
  
  

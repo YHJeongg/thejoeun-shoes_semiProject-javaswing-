@@ -13,9 +13,12 @@ public class HMTakeSearchCommand implements HCommand {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		String queryName = request.getParameter("name");
+		String queryContent = request.getParameter("content");
+		
 		ManufacturerDao dao = new ManufacturerDao();
-//		ArrayList<ManufacturerDto> dtos = dao.manageOrderList();
-//		request.setAttribute("list", dtos);
+		ArrayList<ManufacturerDto> dtos = dao.searchListAction(queryName, queryContent);
+		request.setAttribute("list", dtos);
 	}
 
 }

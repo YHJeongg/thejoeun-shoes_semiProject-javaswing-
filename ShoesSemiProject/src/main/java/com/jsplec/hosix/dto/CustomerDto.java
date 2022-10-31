@@ -3,6 +3,8 @@ package com.jsplec.hosix.dto;
 public class CustomerDto {
 	String cId;
 	String cPw;
+	String cNewpw1;
+	String cNewpw2;
 	String cName;
 	String cTelno;
 	String cEmail;
@@ -26,7 +28,34 @@ public class CustomerDto {
 		this.cIndate = cIndate;
 		this.cOutdate = cOutdate;
 	}
+	
+	public CustomerDto(String cId, String cName, String cTelno, String cEmail, String cAddress) {
+		super();
+		this.cId = cId;
+		this.cName = cName;
+		this.cTelno = cTelno;
+		this.cEmail = cEmail;
+		this.cAddress = cAddress;
+	}
 
+	public CustomerDto(String cId, String cNewpw1, String cNewpw2, String cName, String cTelno, String cEmail,
+			String cAddress) {
+		super();
+		this.cId = cId;
+		this.cNewpw1 = cNewpw1;
+		this.cNewpw2 = cNewpw2;
+		this.cName = cName;
+		this.cTelno = cTelno;
+		this.cEmail = cEmail;
+		this.cAddress = cAddress;
+	}
+	
+	public CustomerDto(String cId, String cPw) {
+		super();
+		this.cId = cId;
+		this.cPw = cPw;
+	}
+	
 	public String getcId() {
 		return cId;
 	}
@@ -90,7 +119,25 @@ public class CustomerDto {
 	public void setcOutdate(String cOutdate) {
 		this.cOutdate = cOutdate;
 	}
+
+	public String getcNewpw1() {
+		return cNewpw1;
+	}
+
+	public void setcNewpw1(String cNewpw1) {
+		this.cNewpw1 = cNewpw1;
+	}
+
+	public String getcNewpw2() {
+		return cNewpw2;
+	}
+
+	public void setcNewpw2(String cNewpw2) {
+		this.cNewpw2 = cNewpw2;
+	}
+	
+	
 	
 	
 
-}
+} // End

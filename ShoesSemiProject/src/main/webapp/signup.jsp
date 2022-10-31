@@ -14,7 +14,7 @@
 <br><br>
 	&nbsp;&nbsp;&nbsp;<h2>회원가입</h2>&nbsp;&nbsp;&nbsp;
 </div>
-<form action="signup.do" method="post" >
+<form action="signup.do" method="post" name="Menber">
 	<table style="margin-left: auto; margin-right: auto;">
 	   <tr>
 	      <td>아이디</td>
@@ -50,7 +50,7 @@
 	      <td>이메일</td>
 	   </tr>
 	   <tr>
-	      <td><input type="text" name="cTelno" size="40"></td>
+	      <td><input type="text" name="cEmail" size="40"></td>
 	   </tr>
 	   <tr>
 	      <td>주소</td>
@@ -59,7 +59,10 @@
 	      <td><input type="text" name="cAddress" size="40"></td>
 	   </tr>
 	   <tr>
-	      <td><input type="submit" value="회원가입하기" style="WIDTH: 210pt; HEIGHT: 20pt"><a href="Main.do">홈으로 돌아가기</a></td>
+	      <td><input type="submit" value="회원가입하기" style="WIDTH: 210pt; HEIGHT: 20pt"></td>
+	   </tr>
+	   <tr>
+	      <td><a href="home.jsp">홈으로 돌아가기</a></td>
 	   </tr>
 	</table>
 	</form>
