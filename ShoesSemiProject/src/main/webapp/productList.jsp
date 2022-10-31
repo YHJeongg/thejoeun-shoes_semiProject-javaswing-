@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HosiX</title>
+    <title>HosiX 상품페이지</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -77,6 +77,12 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-md-6">
+                    <c:if test='<%=request.getParameter("pCategory") != null%>'>
+                    	<h4><b><%=request.getParameter("pBrand")%> - <%=request.getParameter("pCategory")%></b></h4>
+                    </c:if>
+                    <c:if test='<%=request.getParameter("pCategory") == null%>'>
+                    	<h4><b>ALL</b></h4>
+                    </c:if>
                     </div>
                     <div class="col-md-6 pb-4">
                         <div class="d-flex">
@@ -97,14 +103,14 @@
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white mt-2" href="productDetail.do?pId=${dto.pId}"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="insertCart.do?product_pId=${dto.pId}&cQty=1"><i class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body" align="center">
                             	<a href="shop-single.html" class="h3 text-decoration-none">${dto.pBrand}</a><br>
                                 <a href="shop-single.html" class="h3 text-decoration-none">${dto.pName}</a>
-                                <p class="text-center mb-0"><fmt:formatNumber value="${dto.pPrice}" groupingUsed="true" />원</p>
+                                <p class="text-center mb-0"><fmt:formatNumber value="${dto.pPrice}" groupingUsed="true" /> 원</p>
                             </div>
                         </div>
                     </div>

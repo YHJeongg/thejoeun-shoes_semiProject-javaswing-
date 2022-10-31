@@ -6,26 +6,24 @@ public class ManufacturerDto {
 	int mfId;
 	String mfName;
 	String mfBrand;
-	String mfCrn;
 	String mfProductname;
 	String mfCategory;
 	String mfSize;
 	int mfPrice;
 	
 	// Constructor
-	public ManufacturerDto(int mfId, String mfName, String mfBrand, String mfCrn, String mfProductname,
-			String mfCategory, String mfSize, int mfPrice) {
+	public ManufacturerDto(int mfId, String mfName, String mfBrand, String mfProductname, String mfCategory,
+			String mfSize, int mfPrice) {
 		super();
 		this.mfId = mfId;
 		this.mfName = mfName;
 		this.mfBrand = mfBrand;
-		this.mfCrn = mfCrn;
 		this.mfProductname = mfProductname;
 		this.mfCategory = mfCategory;
 		this.mfSize = mfSize;
 		this.mfPrice = mfPrice;
 	}
-	
+
 	public ManufacturerDto(int mfId, String mfBrand, String mfProductname, String mfCategory, String mfSize,
 			int mfPrice) {
 		super();
@@ -59,14 +57,6 @@ public class ManufacturerDto {
 
 	public void setMfBrand(String mfBrand) {
 		this.mfBrand = mfBrand;
-	}
-
-	public String getMfCrn() {
-		return mfCrn;
-	}
-
-	public void setMfCrn(String mfCrn) {
-		this.mfCrn = mfCrn;
 	}
 
 	public String getMfProductname() {
