@@ -28,9 +28,13 @@
 <body>
 <div align="center">
 <%@include file="header_manage.jsp"%><!-- 부트스트랩을 사용하겠다는 선언 -->
+	<br>
+	<br>
 	<h1>회원 주문목록</h1>
 	<br><br><br>
-		<table border="1">
+		<table border="1"
+			class="table table-hover table-bordered border-secondary"
+			style="width: 100%; margin: auto;">
 		<tr>
 			<th>Seq</th><th>회원 ID</th><th>제품 번호</th><th>진행 상태</th><th>회원 주소</th><th>주문 가격</th>
 			<th>사이즈</th><th>주문 수량</th><th>주문 일자</th>
