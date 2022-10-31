@@ -65,7 +65,7 @@ public class CartDao {
 
             String query1 = "select cu.cId, p.pId, sum(ca.cQty), p.pName, sum(p.pPrice), p.pBrand, p.pPrice ";
             String query2 = "from product as p, customer as cu, cart ca ";
-            String query3 = "where p.pId = ca.product_pId and cu.cId = ca.customer_cId and ca.customer_cId = 'hotwo' ";
+            String query3 = "where p.pId = ca.product_pId and cu.cId = ca.customer_cId and ca.customer_cId = 'hosix' ";
             String query4 = "group by cu.cId, p.pId, p.pName, p.pBrand, p.pPrice";
             
             preparedStatement = connection.prepareStatement(query1 + query2 + query3 + query4);

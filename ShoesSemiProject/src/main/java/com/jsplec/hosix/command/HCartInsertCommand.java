@@ -12,7 +12,7 @@ public class HCartInsertCommand implements HCommand {
         // TODO Auto-generated method stub
         
 //      String customer_cId = request.getParameter("customer_cId");
-        String customer_cId = "hotwo";
+        String customer_cId = "hosix";
         int product_pId = Integer.parseInt(request.getParameter("product_pId"));
         int cQty = Integer.parseInt(request.getParameter("cQty"));
         

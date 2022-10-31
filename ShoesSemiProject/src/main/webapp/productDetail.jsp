@@ -176,6 +176,7 @@ https://templatemo.com/tm-559-zay-shop
 
                             <form action="insertCart.do" method="post">
                                 <input type="hidden" name="product-title" value="Activewear">
+                                <input type="hidden" name="pPrice" value="${productDetail.pPrice}">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
