@@ -21,56 +21,56 @@ import com.jsplec.hosix.command.HMTakeActionCommand;
 import com.jsplec.hosix.command.HPListCommand;
 import com.jsplec.hosix.command.HProductdetailCommand;
 import com.jsplec.hosix.command.HMTakeRecordCommand;
+import com.jsplec.hosix.command.HMTakeListCommand;
 import com.jsplec.hosix.command.HMTakeSearchCommand;
 
 /**
- * Servlet implementation class FrontController
- */
+* Servlet implementation class FrontController
+*/
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+      
+   /**
+    * @see HttpServlet#HttpServlet()
+    */
+   public FrontController() {
+       super();
+       // TODO Auto-generated constructor stub
+   }
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FrontController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("doGet");
+		actionDo(request, response);
+	}
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        actionDo(request, response);
-    }
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("doPost");
+		actionDo(request, response);
+	}
+	
+	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("actionDo");
+		request.setCharacterEncoding("utf-8");
+		
+		String viewPage = null;
+		HCommand command = null;
+		
+		String uri = request.getRequestURI();
+		String conPath = request.getContextPath();
+		String com = uri.substring(conPath.length());
+		System.out.println(com);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);
+	}
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     *      response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        actionDo(request, response);
-    }
-
-    private void actionDo(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-
-        String viewPage = null;
-        HCommand command = null;
-
-        String uri = request.getRequestURI();
-        String conPath = request.getContextPath();
-        String com = uri.substring(conPath.length());
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-        dispatcher.forward(request, response);
-    }
-
-} // End
+}
