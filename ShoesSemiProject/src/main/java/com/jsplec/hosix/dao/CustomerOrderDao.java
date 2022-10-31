@@ -37,9 +37,8 @@ public class CustomerOrderDao {
 		System.out.println("manage_customer_order에 들어왔습니다.");
 		try {
 			connection=dataSource.getConnection();//pSize추가하기
-			String query="select oSeq, customer_cId, product_pId, oOkdate, oAddress, oPrice, pSize, oQty, oDate "
-					+ "from orders, product "
-					+ "group by oseq order by oseq " ;
+			String query= "select oSeq, customer_cId, product_pId, oOkdate, oAddress, oPrice, pSize, oQty, oDate "
+					+ "from orders, product group by oseq, customer_cId, product_pId, pSize order by oseq";
 			preparedStatement=connection.prepareStatement(query);
 			resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {

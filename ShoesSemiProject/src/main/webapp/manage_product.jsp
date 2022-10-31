@@ -47,7 +47,8 @@
 		<input type="text" name="content" size="30">
 		<input type="submit"value="검색">
 	</form>
-	<table border="1">
+	<table border="1" class="table table-hover table-bordered border-secondary"
+			style="width: 80%; margin: auto;">
 		<tr>
 			<th>제품 번호</th><th>주문번호</th><th>제조회사 상품 번호</th><th>브랜드명</th><th>제품 이름</th><th>가격</th><th>카테고리</th>
 			<th>사이즈</th><th>재고 수량</th><th>재고 수량 수정일자</th><th>이미지</th><th>제품 상세정보</th><th>삭제</th><th>재고요청</th>

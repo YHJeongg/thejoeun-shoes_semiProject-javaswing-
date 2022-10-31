@@ -31,52 +31,47 @@ import com.jsplec.hosix.command.HMTakeSearchCommand;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public FrontController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public FrontController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("doGet");
 		actionDo(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("doPost");
 		actionDo(request, response);
 	}
-
-	private void actionDo(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("actionDo");
 		request.setCharacterEncoding("utf-8");
-
+		
 		String viewPage = null;
 		HCommand command = null;
-
+		
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		System.out.println(com);
-
-		switch (com) {
-		// ---------------- 상 콘트롤러 Start -------------------------------------------------
+		
+		switch(com) {
+		// ---------------- 상원 콘트롤러 Start -------------------------------------------------
 		// 발주 전체 리스트 검색
 		case ("/manage_take_list.do"):
 			command = new HMTakeListCommand();
@@ -176,12 +171,13 @@ public class FrontController extends HttpServlet {
 			viewPage = "manage_customer_info.jsp";// 보여주기
 			break;
 		// ---------------- 명철 콘트롤러 End Line --------------------------------------
-
-
-		} // switch
-
+			
+			
+		} //switch
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
+	
 
 }
