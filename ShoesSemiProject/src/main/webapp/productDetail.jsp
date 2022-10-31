@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
+<html>
 <head>
     <title>HosiX Shop - Product Detail Page</title>
     <meta charset="utf-8">
@@ -175,6 +176,7 @@ https://templatemo.com/tm-559-zay-shop
 
                             <form action="insertCart.do" method="post">
                                 <input type="hidden" name="product-title" value="Activewear">
+                                <input type="hidden" name="pPrice" value="${productDetail.pPrice}">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
@@ -193,17 +195,28 @@ https://templatemo.com/tm-559-zay-shop
                                             </li>
                                      </ul>
                                     </div>
-                                    </p>
                                     <p>
+                                    <script type="text/javascript">
+                                    	function increaseCQty() {
+                                    		document.getElementById('cQty').value = parseInt(document.getElementById('cQty').value) + parseInt(1);
+										}
+                                    	function decreaseCQty() {
+                                    		if(parseInt(document.getElementById('cQty').value) <= 1){
+                                    			document.getElementById("cQty").value = 1
+                                    		} else {
+                                				document.getElementById("cQty").value = parseInt(document.getElementById('cQty').value) - parseInt(1);
+                                    		}
+										}
+                                    </script>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 <b>수량 :</b>
-                                                <input type="hidden" name="cQty" id="product-quanity" value="1">
+                                                <input type="hidden" name="cQty" id="cQty" value="1">
                                             </li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus" onclick="decreaseCQty()">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus" onclick="increaseCQty()">+</span></li>
                                         </ul>
                                     </div>
                                 </div>

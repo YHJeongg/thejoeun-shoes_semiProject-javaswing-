@@ -63,7 +63,7 @@
 					</tr>
 				</table>
 				<div align="right">
-				<button class="btn btn-success btn-lg px-3" type="button">취소</button>&nbsp;&nbsp;&nbsp;&nbsp;
+				<button class="btn btn-success btn-lg px-3" type="button" onclick="location.href='productList.do'">취소</button>&nbsp;&nbsp;&nbsp;&nbsp;
 				<button class="btn btn-success btn-lg px-3" type="button">구매</button>&nbsp;&nbsp;&nbsp;&nbsp;
 				</div>
 			</div>

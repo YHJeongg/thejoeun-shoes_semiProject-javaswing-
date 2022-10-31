@@ -9,18 +9,20 @@ public class CartDto {
 	int cQty;
 	Timestamp cDate;
 	String pName;
-	int pPrice;
+	int pPriceSum;
 	int pSize;
 	String pBrand;
+	int pPrice;
 	
-    public CartDto(String customer_cId, int product_pId, int cQty, String pName, int pPrice, String pBrand) {
+    public CartDto(String customer_cId, int product_pId, int cQty, String pName, int pPriceSum, String pBrand, int pPrice) {
         super();
         this.customer_cId = customer_cId;
         this.product_pId = product_pId;
         this.cQty = cQty;
         this.pName = pName;
-        this.pPrice = pPrice;
+        this.pPriceSum = pPriceSum;
         this.pBrand = pBrand;
+        this.pPrice = pPrice;
     }
 
     public String getCustomer_cId() {
@@ -86,6 +88,15 @@ public class CartDto {
     public void setpBrand(String pBrand) {
         this.pBrand = pBrand;
     }
+
+    public int getpPriceSum() {
+        return pPriceSum;
+    }
+
+    public void setpPriceSum(int pPriceSum) {
+        this.pPriceSum = pPriceSum;
+    }
 	
+    
 	
 }
