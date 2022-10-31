@@ -19,6 +19,8 @@ public class OrdersDto {
 	String pBrand;
 	int pPrice;
 	int pSize;
+	String cName;
+	String cTelno;
 	
 	
 	
@@ -53,11 +55,13 @@ public class OrdersDto {
 	public int getoSeq() {
 		return oSeq;
 	}
+
 	
 	
 	
 	// G&S
-
+	
+	
 	public String getoAddress() {
 		return oAddress;
 	}
@@ -98,11 +102,73 @@ public class OrdersDto {
 		this.oOkdate = oOkdate;
 	}
 
+	public String getCustomer_cId() {
+		return customer_cId;
+	}
+
+	public void setCustomer_cId(String customer_cId) {
+		this.customer_cId = customer_cId;
+	}
+
+	public int getProduct_pId() {
+		return product_pId;
+	}
+
+	public void setProduct_pId(int product_pId) {
+		this.product_pId = product_pId;
+	}
+
+	public String getpName() {
+		return pName;
+	}
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+	public String getpBrand() {
+		return pBrand;
+	}
+
+	public void setpBrand(String pBrand) {
+		this.pBrand = pBrand;
+	}
+
+	public int getpPrice() {
+		return pPrice;
+	}
+
+	public void setpPrice(int pPrice) {
+		this.pPrice = pPrice;
+	}
+
+	public int getpSize() {
+		return pSize;
+	}
+
+	public void setpSize(int pSize) {
+		this.pSize = pSize;
+	}
+
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+
+	public String getcTelno() {
+		return cTelno;
+	}
+
+	public void setcTelno(String cTelno) {
+		this.cTelno = cTelno;
+	}
+
 	public void setoSeq(int oSeq) {
 		this.oSeq = oSeq;
 	}
 	
-	
-	
-	
+
 } // End

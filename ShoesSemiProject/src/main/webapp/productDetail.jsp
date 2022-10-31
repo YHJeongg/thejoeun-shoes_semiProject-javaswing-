@@ -174,6 +174,7 @@ https://templatemo.com/tm-559-zay-shop
                             <p>${productDetail.pInformation}</p>
 
                             <form action="insertCart.do" method="post">
+                            <input type="hidden" name="pPrice" value="${productDetail.pPrice}">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <div class="row">
                                     <div class="col-auto">
@@ -195,22 +196,34 @@ https://templatemo.com/tm-559-zay-shop
                                     </div>
                                     </p>
                                     <p>
+                                    <script type="text/javascript">
+                                    	function increaseCQty() {
+                                    		document.getElementById('cQty').value = parseInt(document.getElementById('cQty').value) + parseInt(1);
+										}
+                                    	function decreaseCQty() {
+                                    		if(parseInt(document.getElementById('cQty').value) <= 1){
+                                    			document.getElementById("cQty").value = 1
+                                    		} else {
+                                				document.getElementById("cQty").value = parseInt(document.getElementById('cQty').value) - parseInt(1);
+                                    		}
+										}
+                                    </script>
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
                                             <li class="list-inline-item text-right">
                                                 <b>수량 :</b>
-                                                <input type="hidden" name="cQty" id="product-quanity" value="1">
+                                                <input type="hidden" name="cQty" id="cQty" value="1">
                                             </li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus" onclick="decreaseCQty()">-</span></li>
                                             <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
-                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus" onclick="increaseCQty()">+</span></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <input type="hidden" name="product_pId" value='<%=request.getParameter("pId")%>'>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="insertbuy" value="buy" onclick="javascript: form.action='order.do'">구매</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="insertbuy" value="buy" onclick="javascript: form.action='order.do?pId=<%=request.getParameter("pId")%>'">구매</button>
                                     </div>
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="insertcart" value="addtocard" onclick="javascript: form.action='insertCart.do'">장바구니 담기</button>
