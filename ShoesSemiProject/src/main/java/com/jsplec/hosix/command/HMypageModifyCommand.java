@@ -13,11 +13,11 @@ public class HMypageModifyCommand implements HCommand {
 		String cId = request.getParameter("cId");
 		String cName = request.getParameter("cName");
 		String cTelno = request.getParameter("cTelno");
-		String cAddress = request.getParameter("cAddress");
 		String cEmail = request.getParameter("cEmail");
+		String cAddress = request.getParameter("cAddress");
 		
 		CustomerDao dao = new CustomerDao();
-		int result = dao.mypageModify(cId, cName, cTelno, cAddress, cEmail);
+		int result = dao.mypageModify(cId, cName, cTelno, cEmail, cAddress);
 		System.out.println(result + " Modify Successful if 1");
 
 	}

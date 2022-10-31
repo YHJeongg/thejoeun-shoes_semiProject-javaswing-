@@ -13,7 +13,7 @@ public class HMypageDeleteCommand implements HCommand {
 		String cId = request.getParameter("cId");
 		
 		CustomerDao dao = new CustomerDao();
-		int result = dao.delete(cId);
+		int result = dao.mypageDelete(cId);
 		System.out.println(result + "Delete Successful if 1");
 
 	}

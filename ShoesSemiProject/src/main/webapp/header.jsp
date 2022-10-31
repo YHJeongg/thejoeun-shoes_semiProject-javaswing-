@@ -45,8 +45,8 @@
                     	if (session.getAttribute("cId")==null) {
                     %>
                    			<form action="login.jsp">
-                    			<input type="submit" value="로그인" onclick="javascript: form.action='login.jsp'">
-                    			<input type="submit" value="회원가입" onclick="javascript: form.action='signup.jsp'">
+                    			<input type="submit" value="로그인" onclick="javascript: form.action='login.do'">
+                    			<input type="submit" value="회원가입" onclick="javascript: form.action='signup.do'">
                        		</form>
                     <%
                     	} else {

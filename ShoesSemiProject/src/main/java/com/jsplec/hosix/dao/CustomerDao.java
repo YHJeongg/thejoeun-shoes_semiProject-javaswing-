@@ -142,7 +142,7 @@ public class CustomerDao {
 		
 	} // modify
 	
-	public int delete (String scId) {
+	public int mypageDelete (String scId) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		int returnValue = 0;
