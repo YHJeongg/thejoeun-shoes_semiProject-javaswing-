@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
+<html>
 <head>
     <title>HosiX Shop - Product Detail Page</title>
     <meta charset="utf-8">
@@ -176,6 +177,7 @@ https://templatemo.com/tm-559-zay-shop
                             <form action="insertCart.do" method="post">
                             <input type="hidden" name="pPrice" value="${productDetail.pPrice}">
                                 <input type="hidden" name="product-title" value="Activewear">
+                                <input type="hidden" name="pPrice" value="${productDetail.pPrice}">
                                 <div class="row">
                                     <div class="col-auto">
                                         <ul class="list-inline pb-3">
@@ -194,7 +196,6 @@ https://templatemo.com/tm-559-zay-shop
                                             </li>
                                      </ul>
                                     </div>
-                                    </p>
                                     <p>
                                     <script type="text/javascript">
                                     	function increaseCQty() {

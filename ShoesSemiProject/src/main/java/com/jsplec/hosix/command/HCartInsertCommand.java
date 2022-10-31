@@ -16,8 +16,6 @@ public class HCartInsertCommand implements HCommand {
         int product_pId = Integer.parseInt(request.getParameter("product_pId"));
         int cQty = Integer.parseInt(request.getParameter("cQty"));
         
-        System.out.println(customer_cId);
-        System.out.println(product_pId);
         System.out.println(cQty);
         
         CartDao dao = new CartDao();
