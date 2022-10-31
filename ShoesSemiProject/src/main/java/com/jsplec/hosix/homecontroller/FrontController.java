@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jsplec.hosix.command.HCategoryPListCommand;
 import com.jsplec.hosix.command.HCommand;
@@ -15,6 +16,7 @@ import com.jsplec.hosix.command.HMypageDeleteCommand;
 import com.jsplec.hosix.command.HMypageModifyCommand;
 import com.jsplec.hosix.command.HMypageSelectCommand;
 import com.jsplec.hosix.command.HPListCommand;
+import com.mysql.cj.Session;
 
 /**
  * Servlet implementation class FrontController
@@ -50,6 +52,7 @@ public class FrontController extends HttpServlet {
     private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         
+        HttpSession session = request.getSession();
         String viewPage = null;
         HCommand command = null;
         
@@ -89,6 +92,10 @@ public class FrontController extends HttpServlet {
             viewPage = "productList.jsp";
         break;
         
+        case("/logout.do"):
+        	session.invalidate();
+        	viewPage = "index.jsp";
+        break;
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

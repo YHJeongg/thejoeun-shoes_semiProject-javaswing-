@@ -80,13 +80,12 @@ public class CustomerDao {
 				
 				if(resultSet.next()) {
 					String cId = resultSet.getString("cId");
-					String cPw = resultSet.getString("cPw");
 					String cName = resultSet.getString("cName");
 					String cTelno = resultSet.getString("cTelno");
 					String cEmail = resultSet.getString("cEmail");
 					String cAddress = resultSet.getString("cAddress");
 					
-					dto = new CustomerDto(cId, cPw, cName, cTelno, cEmail, cAddress);
+					dto = new CustomerDto(cId, cName, cTelno, cEmail, cAddress);
 					
 				}
 				
@@ -107,21 +106,24 @@ public class CustomerDao {
 			
 		} // select
 	
-	public int mypageModify (String scId, String cName, String cTelno, String cEmail, String cAddress) {
+	public int mypageModify (String scId, String cName, String cNewpw1, String cTelno, String cEmail, String cAddress) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		int returnValue = 0;
 		
+		if(cNewpw1 != null) {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "update customer set cName = ?, cTelno = ?, cEmail = ?, cAddress = ? where cId = ?";
+			
+			String query = "update customer set cName = ?, cPw = ?, cTelno = ?, cEmail = ?, cAddress = ? where cId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, cName);
-			preparedStatement.setString(2, cTelno);
-			preparedStatement.setString(3, cEmail);
-			preparedStatement.setString(4, cAddress);
-			preparedStatement.setString(5, scId);
+			preparedStatement.setString(2, cNewpw1);
+			preparedStatement.setString(3, cTelno);
+			preparedStatement.setString(4, cEmail);
+			preparedStatement.setString(5, cAddress);
+			preparedStatement.setString(6, scId);
 			
 			returnValue = preparedStatement.executeUpdate();
 			// executeUpdate()는 int를 리턴함. 리턴 값이 1일시 정상 입력됨.
@@ -140,6 +142,38 @@ public class CustomerDao {
 		}
 		return returnValue;
 		
+		} else {
+			try {
+				connection = dataSource.getConnection();
+				
+				
+				String query = "update customer set cName = ?, cTelno = ?, cEmail = ?, cAddress = ? where cId = ?";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, cName);
+				preparedStatement.setString(2, cTelno);
+				preparedStatement.setString(3, cEmail);
+				preparedStatement.setString(4, cAddress);
+				preparedStatement.setString(5, scId);
+				
+				returnValue = preparedStatement.executeUpdate();
+				// executeUpdate()는 int를 리턴함. 리턴 값이 1일시 정상 입력됨.
+				
+			}catch(Exception e){
+				e.printStackTrace(); 
+				
+			}finally {
+				try {
+					if(preparedStatement != null) preparedStatement.close();
+					if(connection != null) connection.close();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+			return returnValue;
+			
+		}
+			
 	} // modify
 	
 	public int mypageDelete (String scId) {
@@ -150,7 +184,7 @@ public class CustomerDao {
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "delete from customer where cId = ?";
+			String query = "update customer set cOutdate = curdate() where cId = ?";
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, scId);
 			
