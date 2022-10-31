@@ -175,6 +175,7 @@ https://templatemo.com/tm-559-zay-shop
                             <p>${productDetail.pInformation}</p>
 
                             <form action="insertCart.do" method="post">
+                            <input type="hidden" name="pPrice" value="${productDetail.pPrice}">
                                 <input type="hidden" name="product-title" value="Activewear">
                                 <input type="hidden" name="pPrice" value="${productDetail.pPrice}">
                                 <div class="row">
@@ -223,7 +224,7 @@ https://templatemo.com/tm-559-zay-shop
                                 <input type="hidden" name="product_pId" value='<%=request.getParameter("pId")%>'>
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="insertbuy" value="buy" onclick="javascript: form.action='order.do'">구매</button>
+                                        <button type="submit" class="btn btn-success btn-lg" name="insertbuy" value="buy" onclick="javascript: form.action='order.do?pId=<%=request.getParameter("pId")%>'">구매</button>
                                     </div>
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="insertcart" value="addtocard" onclick="javascript: form.action='insertCart.do'">장바구니 담기</button>

@@ -69,16 +69,19 @@ public class OrdersDao {
 	
 	
 	// ----------------- Product Detail Page END ------------------------
+	
+	
 	// view orderpage
-	public o contentView(int spId) {
+	public ProductListDto orderView(int spId) {
 		ProductListDto dto = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
+		System.out.println(spId);
 		try {
 			connection = dataSource.getConnection();
 			
-			String query = "select pId, pBrand, pName, pPrice, pCategory, pInformation, pStock, pSize from product where pId = " + spId ;
+			String query = "select pId, pBrand, pName, pPrice, pCategory, pInformation, pStock, pSize, cName, cTelno, cId from product, customer where cId = 'hosix' and pId = " + spId;
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -87,12 +90,16 @@ public class OrdersDao {
 				String pName = resultSet.getString("pName");
 				String pCategory = resultSet.getString("pCategory");
 				String pInformation = resultSet.getString("pInformation");
+				String cName =resultSet.getString("cName");
+				String cTelno =resultSet.getString("cTelno");
 				int pPrice = resultSet.getInt("pPrice");
 				int pStock = resultSet.getInt("pStock");
 				int pId = resultSet.getInt("pId");
 				String pSize = resultSet.getString("pSize");
+				String cId = resultSet.getString("cId");
 				
-				dto = new ProductListDto(pId, pBrand, pName, pPrice, pCategory, pSize, pStock, pInformation);
+				
+				dto = new ProductListDto(pId, pBrand, pName, pPrice, pCategory, pSize, pStock, pInformation, cName, cTelno, cId);
 			}
 			
 		}catch(Exception e) {
@@ -113,7 +120,7 @@ public class OrdersDao {
 	public void insertOrder(String customer_cId, int product_pId, String oAddress, int oPrice, int oQty) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		
+		System.out.println(customer_cId);
 		try {
 			connection = dataSource.getConnection();
 			
