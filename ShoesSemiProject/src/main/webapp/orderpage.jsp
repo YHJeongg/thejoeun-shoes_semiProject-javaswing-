@@ -46,44 +46,48 @@ int mul = num1*num2;
     <!-- Close Top Nav -->
 
 	<h2 align="center"><b>주문하기</b></h2>
- 
-	<form action="insertOrder.do" method="get"> 
-		<table class="container" border="1">
-			<tr>
+ 		<div class="container py-5" align="center">
+		<div class="col-lg-10">
+			<form action="insertOrder.do" method="get"> 
+			<table class="table table-hover">
+			<tr align="center">
 			<td><input type="hidden" name="customer_cId"  id="cId" value='<%=request.getParameter("cId")%>'></td>
 			<td><input type="hidden" name="product_pId" id="pId" value='<%=request.getParameter("pId")%>'></td>
-				<td>이름 : ${orderpage.cName} </td>
 			</tr>
 			<tr>
-				<td>전화번호 : ${orderpage.cTelno}</td>
+				<td align="right">이름 :</td> <td>${orderpage.cName} </td>
 			</tr>
 			<tr>
-				<td>배송지 : 
-				<input type="text" name="oAddress" id="oAddress" size="50"></td>
+				<td align="right">전화번호 :</td> <td>${orderpage.cTelno}</td>
 			</tr>
 			<tr>
-				<td>상품명 : ${orderpage.pName}</td>
+				<td align="right">배송지 : </td>
+				<td><input type="text" name="oAddress" id="oAddress" size="50"></td>
 			</tr>
 			<tr>
-				<td>사이즈 : ${orderpage.pSize}</td>
+				<td align="right">상품명 :</td> <td>${orderpage.pName}</td>
+			</tr>
+			<tr> 
+				<td align="right">사이즈 :</td> <td>${orderpage.pSize}</td>
 			</tr>
 			<tr>
-				<td>상품금액 : ${orderpage.pPrice}</td>
+				<td align="right">상품금액 :</td> <td>${orderpage.pPrice}</td>
 			</tr>
 			<tr>
-				<td>수량 : <%=request.getParameter("cQty") %>개
+				<td align="right">수량 :</td> <td><%=request.getParameter("cQty") %>개
 				<input type="hidden" name="cQty" value='<%=request.getParameter("cQty")%>'> </td>
 			</tr>
 			<tr>
-				<td>총금액 : <%=mul%>
+				<td align="right">총금액 :</td> <td><%=mul%>
 				<input type="hidden" name="pPrice" value='<%=request.getParameter("pPrice")%>'></td>
 			</tr>
 
 		
 		</table>
-		<input type="submit" name="buy" value="구매하기" onclick="checkForm()">
+		<button class="btn btn-success btn-lg px-3" type="submit" name="buy" value="구매하기" onclick="checkForm()">구매</button>
 	</form>
- 
+ </div>
+ </div>
  
  
  

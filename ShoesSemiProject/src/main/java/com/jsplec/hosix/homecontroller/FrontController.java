@@ -82,7 +82,6 @@ public class FrontController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		
 		HttpSession session = request.getSession(); // *******session
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
