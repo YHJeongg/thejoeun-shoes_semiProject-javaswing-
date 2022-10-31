@@ -49,6 +49,14 @@ public class CustomerDto {
 		this.cEmail = cEmail;
 		this.cAddress = cAddress;
 	}
+	
+	public CustomerDto(String cId, String cPw) {
+		super();
+		this.cId = cId;
+		this.cPw = cPw;
+	}
+	
+	
 
 	public String getcId() {
 		return cId;
