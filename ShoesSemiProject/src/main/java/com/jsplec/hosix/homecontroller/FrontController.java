@@ -28,6 +28,8 @@ import com.jsplec.hosix.command.HMPModifyCommand;
 import com.jsplec.hosix.command.HMPSearchCommand;
 import com.jsplec.hosix.command.HMPSeenCommand;
 import com.jsplec.hosix.command.HMTakeActionCommand;
+import com.jsplec.hosix.command.HPListCommand;
+import com.jsplec.hosix.command.HProductdetailCommand;
 import com.jsplec.hosix.command.HMTakeListCommand;
 import com.jsplec.hosix.command.HMTakeSearchCommand;
 import com.jsplec.hosix.command.HMypageDeleteCommand;
@@ -87,7 +89,6 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
-
 		HttpSession session = request.getSession(); // *******session
 
 		switch (com) {
