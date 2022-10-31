@@ -61,68 +61,6 @@ public class FrontController extends HttpServlet {
         String conPath = request.getContextPath();
         String com = uri.substring(conPath.length());
         
-        switch(com) {
-        
-    	case("/mypage_infoselect.do"):
-			command = new HMypageSelectCommand();
-			command.execute(request, response);
-			viewPage = "mypage_info.jsp";
-		break;
-		
-    	case("/mypage_modify.do"):
-			command = new HMypageModifyCommand();
-			command.execute(request, response);
-			viewPage = "mypage_infoselect.do";
-		break;
-		
-    	case("/mypage_delete.do"):
-			command = new HMypageDeleteCommand();
-			command.execute(request, response);
-			session.invalidate();
-			viewPage = "index.jsp";
-		break;
-		
-    	case("/productList.do"):
-            command = new HPListCommand();
-            command.execute(request, response);
-            viewPage = "productList.jsp";
-        break;
-        
-        case("/productListCategory.do"):
-        	command = new HCategoryPListCommand();
-            command.execute(request, response);
-            viewPage = "productList.jsp";
-        break;
-        
-		case ("/signup.do"):
-			System.out.println("signup.do");
-			command = new HSignupInsertCommand();
-			command.execute(request, response);
-			viewPage = "login.jsp";
-			break;
-
-		case ("/login.do"):
-			System.out.println("login.do");
-			command = new HLoginSelectCommand();
-			command.execute(request, response);
-			break;
-
-		case ("/login_check.do"):
-			session.setAttribute("cId", request.getAttribute("cId"));
-			System.out.println(session.getAttribute("cId"));
-			viewPage = "index.jsp";
-			break;
-
-		case ("/login_fail.do"):
-			viewPage = "login_fail.jsp";
-			break;
-
-		case ("/logout.do"):
-			System.out.println("logout");
-			session.invalidate();
-			viewPage = "index.jsp";
-        }
-        
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
         dispatcher.forward(request, response);
         
