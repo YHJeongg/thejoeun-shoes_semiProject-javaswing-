@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- 복사해서 사용하기 -->
-
-<!-- 실제로 파일 업로드 하기 위한 클래스 -->
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매 상품 관리</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<title>회원 주문목록</title>
 <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon"
 	href="assets/img/favicon.ico">
@@ -28,70 +23,40 @@
 <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
 
+
 </head>
 <body>
-
-	<%@include file="header_manage.jsp"%><!-- 부트스트랩을 사용하기 위한 선언 -->
 <div align="center">
-	<br>
-	<br>
-	<h1>판매 상품 관리</h1>
-	
-		<form action="manage_product_search.do">
-		<br>
-		검색 선택:
-		<select name="query">
-		<option value="pBrand">브랜드명</option>
-		<option value="pName">제품명</option>
-		<option value="pSize">사이즈</option>
-		
-		</select>&nbsp;&nbsp;&nbsp;
-		<!-- &nbsp;는 띄어쓰기 -->
-		<input type="text" name="content" size="30">
-		<input type="submit"value="검색">
-	</form>
-		<br>
-	<br>
-	<table border="1"
-	class="table table-hover table-bordered border-secondary"
-			style="width: 100%; margin: auto;"
-	>
+<%@include file="header_manage.jsp"%><!-- 부트스트랩을 사용하겠다는 선언 -->
+	<br> <br>
+	<h1>회원 주문목록</h1>
+	<br><br><br>
+		<table border="1" class="table table-hover table-bordered border-secondary"
+			style="width: 60%; margin: auto;">
 		<tr>
-			<th> 제품 번호 </th><th> 주문번호 </th>
-			<th style="WIDTH: 80pt; height: 20pt"> 제조회사 상품 번호 </th><th > 브랜드명 </th><th>제품 이름 </th>
-			<th> 가격 </th><th> 카테고리 </th><th>사이즈</th>
-			<th style="WIDTH: 60pt; height: 20pt">재고 수량</th>
-			<th style="WIDTH: 140pt; height: 20pt">재고 수량 수정일자</th>
-			<th style="WIDTH: 60pt; height: 20pt">이미지</th>
-			<th style="WIDTH: 120pt; height: 20pt">제품 상세정보</th>
-			<th >삭제</th><th>재고요청</th>
+			<th>Seq</th><th>회원 ID</th><th>제품 번호</th><th>진행 상태</th><th>회원 주소</th><th>주문 가격</th>
+			<th>사이즈</th><th>주문 수량</th><th>주문 일자</th>
 		</tr>
 		
-		<c:forEach items="${manage_product}" var="dto"><!-- 이페이지의 각각의 속성들을 dto로 보내서 보려는 기능을 사용하려고 dto선언 -->
+		<c:forEach items="${manage_customer_order}" var="dto"><!-- 이페이지의 각각의 속성들을 dto로 보내서 보려는 기능을 사용하려고 dto선언 -->
 			<tr>
-				<td >${dto.pId}</td>
-				<td >${dto.take_tId}</td>
-				<td>${dto.take_manufacturer_mfId}</td>
-				<td>${dto.pBrand}</td>
-				<td><a href="product_select.do?pId=${dto.pId}">${dto.pName}</a></td>
-				<td>${dto.pPrice}</td>
-				<td>${dto.pCategory}</td>
+				<td>${dto.oSeq}</td>
+				<td><a href="manage_customer_info.do?cId=${dto.customer_cId}">${dto.customer_cId}</a></td>
+				<!-- 회원아이디를 누르면 회원 상세 정보가 나올 수 있도록 조회하는 페이지를 만들어야함 -->
+				<td>${dto.product_pId}</td>
+				<td>${dto.oOkdate}</td>
+				<td>${dto.oAddress}</td>
+				<td>${dto.oPrice}</td>
 				<td>${dto.pSize}</td>
-				<td>${dto.pStock}</td>
-				<td>${dto.pStockdate}</td>
-				<td><img name="image" src="assets/img/product/${dto.pBrand}/${dto.pName}.png" width="100"></td>
-				<td>${dto.pInformation}</td>
-				<td><a href="HMPproduct_delete.do?pId=${dto.pId}">삭제</a></td>
-				<td><a href="HMPproduct_insert.do?pName=${dto.pName}">재고 요청</a></td>
+				<td>${dto.oQty}</td>
+				<td>${dto.oDate}</td>
 				<!-- HMPInsertCommand.do가 작동되면 take에 재고 요청을 insert하는 것으로 작성 -->
 			</tr>
 		
 		</c:forEach>
 		
-
 	</table>
 </div>
-
 	<br>
 	<br>
 	<br>
@@ -138,5 +103,7 @@
 			} ]
 		});
 	</script>
+
+
 </body>
 </html>

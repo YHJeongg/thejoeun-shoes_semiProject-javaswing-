@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jsplec.hosix.dao.ManufacturerDao;
+import com.jsplec.hosix.dao.ManageCustomerDao;
+import com.jsplec.hosix.dto.ManageCustomerDto;
 import com.jsplec.hosix.dto.ManufacturerDto;
 
-public class HMTakeSearchCommand implements HCommand {
+public class HMCustomerSearchCommand implements HCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -16,9 +17,10 @@ public class HMTakeSearchCommand implements HCommand {
 		String queryName = request.getParameter("query");
 		String queryContent = request.getParameter("content");
 
-		ManufacturerDao dao = new ManufacturerDao();
-		ArrayList<ManufacturerDto> dtos = dao.searchListAction(queryName, queryContent);
+		ManageCustomerDao dao = new ManageCustomerDao();
+		ArrayList<ManageCustomerDto> dtos = dao.searchCustomerList(queryName, queryContent);
 		request.setAttribute("list", dtos);
+
 	}
 
 }

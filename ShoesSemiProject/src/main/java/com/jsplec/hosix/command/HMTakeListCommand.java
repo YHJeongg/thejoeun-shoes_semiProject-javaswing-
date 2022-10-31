@@ -8,16 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.jsplec.hosix.dao.ManufacturerDao;
 import com.jsplec.hosix.dto.ManufacturerDto;
 
-public class HMTakeSearchCommand implements HCommand {
+public class HMTakeListCommand implements HCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String queryName = request.getParameter("query");
-		String queryContent = request.getParameter("content");
-
 		ManufacturerDao dao = new ManufacturerDao();
-		ArrayList<ManufacturerDto> dtos = dao.searchListAction(queryName, queryContent);
+		ArrayList<ManufacturerDto> dtos = dao.listAction();
 		request.setAttribute("list", dtos);
 	}
 
