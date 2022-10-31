@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
  <!-- Header -->
+ <style> 
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: white;
+  border: none;
+  color: #59ab6e;
+  padding: 8px 26px;
+  text-decoration: none;
+  margin: 3px 1px;
+  cursor: pointer;
+}
+</style>
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -39,17 +51,26 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
+                    
+                    <%
+                    	if (session.getAttribute("cId")==null) {
+                    %>
+                   			<form action="login.jsp">
+              	        		<input type="submit" value="로그인" onclick="javascript: form.action='login.jsp'" back>
+                    			&nbsp;
+                    			<input type="submit" value="회원가입" onclick="javascript: form.action='signup.jsp'">
+                       		</form>
+                    <%
+                    	} else {
+                    %>
+	                    	<a href="mypage_main.jsp" style="text-decoration: none">${cId}</a> &nbsp;&nbsp;&nbsp;
+	                    	<a href="cartlist.do" style="text-decoration: none">장바구니</a> &nbsp;&nbsp;&nbsp;
+	                    	<a href="logout.do" style="text-decoration: none">로그아웃</a> &nbsp;&nbsp;&nbsp;
+	                    	
+	                 <%
+                    	}
+	                 %>
+                    
                 </div>
             </div>
 

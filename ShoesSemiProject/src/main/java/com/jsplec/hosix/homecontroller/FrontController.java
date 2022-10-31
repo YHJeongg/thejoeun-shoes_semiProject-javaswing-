@@ -22,20 +22,20 @@ import com.jsplec.hosix.command.HMCustomerListCommand;
 import com.jsplec.hosix.command.HMCustomerSearchCommand;
 import com.jsplec.hosix.command.HMPDeleteCommand;
 import com.jsplec.hosix.command.HMPInsertCommand;
+import com.jsplec.hosix.command.HMPListCommand;
 import com.jsplec.hosix.command.HMPModifyCommand;
 import com.jsplec.hosix.command.HMPSearchCommand;
 import com.jsplec.hosix.command.HMPSeenCommand;
-import com.jsplec.hosix.command.HOrderinsertCommand;
-import com.jsplec.hosix.command.HOrderpageCommand;
-import com.jsplec.hosix.command.HPListCommand;
-import com.jsplec.hosix.command.HProductdetailCommand;
 import com.jsplec.hosix.command.HMTakeActionCommand;
 import com.jsplec.hosix.command.HMTakeListCommand;
 import com.jsplec.hosix.command.HMTakeSearchCommand;
 import com.jsplec.hosix.command.HMypageDeleteCommand;
 import com.jsplec.hosix.command.HMypageModifyCommand;
 import com.jsplec.hosix.command.HMypageSelectCommand;
+import com.jsplec.hosix.command.HOrderinsertCommand;
+import com.jsplec.hosix.command.HOrderpageCommand;
 import com.jsplec.hosix.command.HPListCommand;
+import com.jsplec.hosix.command.HProductdetailCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -82,61 +82,8 @@ public class FrontController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		
 		HttpSession session = request.getSession(); // *******session
-		
-        switch (com) {
-        // 전체 내용 검색
-        case ("/productList.do"):
-            command = new HPListCommand();
-            command.execute(request, response);
-            viewPage = "productList.jsp";
-            break;
-        case ("/productListCategory.do"):
-            command = new HCategoryPListCommand();
-            command.execute(request, response);
-            viewPage = "productList.jsp";
-            break;
-        // 상세보기 클릭시 상세내용 출력
-        case ("/productDetail.do"):
-            command = new HProductdetailCommand();
-            command.execute(request, response);
-            viewPage = "productDetail.jsp";
-            break;
-        case ("/insertCart.do"):
-            command = new HCartInsertCommand();
-            command.execute(request, response);
-            viewPage = "cart.do";
-            break;
-        case ("/cart.do"):
-            command = new HCartListCommand();
-            command.execute(request, response);
-            viewPage = "cart.jsp";
-            break;
-        // 주문작성page
-        case ("/order.do"):
-        	command = new HOrderpageCommand();
-        	command.execute(request, response);
-        	viewPage = "orderpage.jsp";
-        	break;
-        
-        // Cart Delete
-        case ("/cartDelete.do"):
-            command = new HCartDeleteCommand();
-            command.execute(request, response);
-            viewPage = "cart.do";
-            break;
-            
-        // Insert Order
-        case ("/insertOrder.do"):
-            command = new HOrderinsertCommand();
-            command.execute(request, response);
-            viewPage = "index.jsp";
-            break;
-                
-    }
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
-	
 
 }
