@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jsplec.hosix.command.CustomerOrderCommand;
 import com.jsplec.hosix.command.CustomerOrderInfoCommand;
+import com.jsplec.hosix.command.HCategoryPListCommand;
 import com.jsplec.hosix.command.HCommand;
 import com.jsplec.hosix.command.HMCustomerDeleteCommand;
 import com.jsplec.hosix.command.HMCustomerListCommand;
@@ -24,6 +26,10 @@ import com.jsplec.hosix.command.HMPSeenCommand;
 import com.jsplec.hosix.command.HMTakeActionCommand;
 import com.jsplec.hosix.command.HMTakeListCommand;
 import com.jsplec.hosix.command.HMTakeSearchCommand;
+import com.jsplec.hosix.command.HMypageDeleteCommand;
+import com.jsplec.hosix.command.HMypageModifyCommand;
+import com.jsplec.hosix.command.HMypageSelectCommand;
+import com.jsplec.hosix.command.HPListCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -70,7 +76,75 @@ public class FrontController extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		System.out.println(com);
 		
+		HttpSession session = request.getSession(); // *******session
+		
 		switch(com) {
+        // ----------- 성진 컨트롤러 Start ------------------------
+    	case("/mypage_infoselect.do"):
+			command = new HMypageSelectCommand();
+			command.execute(request, response);
+			viewPage = "mypage_info.jsp";
+		break;
+		
+    	case("/mypage_modify.do"):
+			command = new HMypageModifyCommand();
+			command.execute(request, response);
+			viewPage = "mypage_infoselect.do";
+		break;
+		
+    	case("/mypage_delete.do"):
+			command = new HMypageDeleteCommand();
+			command.execute(request, response);
+			viewPage = "index.jsp";
+		break;
+		
+    	case("/productList.do"):
+            command = new HPListCommand();
+            command.execute(request, response);
+            viewPage = "productList.jsp";
+        break;
+        
+        case("/productListCategory.do"):
+        	command = new HCategoryPListCommand();
+            command.execute(request, response);
+            viewPage = "productList.jsp";
+        break;
+        // ----------- 성진 컨트롤러 End ------------------------
+        // ----------- 수빈 컨트롤러 Start ------------------------
+		case ("/signup.do"):
+			System.out.println("signup.do");
+			command = new HSignupInsertCommand();
+			command.execute(request, response);
+			viewPage = "login.jsp";
+			break;
+
+		case ("/login.do"):
+			System.out.println("login.do");
+			command = new HLoginSelectCommand();
+			command.execute(request, response);
+			// session.setAttribute("cId", request.getAttribute("cId")); // 로그아웃OR화면종료시
+			// 인벨리드?해주기
+			//
+			// System.out.println(session.getAttribute("cId"));
+			break;
+
+		case ("/login_check.do"):
+			session.setAttribute("cId", request.getAttribute("cId"));
+			System.out.println(session.getAttribute("cId"));
+			viewPage = "index.jsp";
+			break;
+
+		case ("/login_fail.do"):
+			viewPage = "login_fail.jsp";
+			break;
+
+		case ("/logout.do"):
+			System.out.println("logout");
+			session.invalidate();
+			break;
+	    // ————— 수빈 컨트롤러 End ————————————
+		
+		
 		// ---------------- 상원 콘트롤러 Start -------------------------------------------------
 		// 발주 전체 리스트 검색
 		case ("/manage_take_list.do"):
