@@ -52,7 +52,7 @@
                     	} else {
                     %>
 	                    	<a href="mypage_main.jsp">${cId}</a> &nbsp;
-	                    	<a href="cartlist.do">장바구니</a> &nbsp;
+	                    	<a href="cart.do">장바구니</a> &nbsp;
 	                    	<a href="logout.do">로그아웃</a> &nbsp;
 	                    	
 	                 <%

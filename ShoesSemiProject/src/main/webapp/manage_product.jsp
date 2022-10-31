@@ -36,6 +36,7 @@
 	<br>
 	<br>
 	<h1>판매 상품 관리</h1>
+	
 		<form action="manage_product_search.do">
 		<br>
 		검색 선택:

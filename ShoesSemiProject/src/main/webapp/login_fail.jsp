@@ -8,7 +8,7 @@
 </head>
 <body>
 <div style="text-align: center;">
-<h2>로그인에 살패하셨습니다.</h2>
+<h2>로그인에 실패하셨습니다.</h2>
 <a href="login.jsp">다시 로그인하기</a>
 <a href="index.jsp">홈으로 돌아가기</a>
 </div>

@@ -17,7 +17,7 @@
 <body>
 <div style="text-align: center;">
 <br><br>
-	&nbsp;&nbsp;&nbsp;<h2><a href="home.jsp">Hosix Shoes</a></h2>&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;<h2><a href="index.jsp">Hosix Shoes</a></h2>&nbsp;&nbsp;&nbsp;
 	<h3>LOGIN</h3>
 	<form action="login.do" method="post">
 	<table style="margin-left: auto; margin-right: auto;">

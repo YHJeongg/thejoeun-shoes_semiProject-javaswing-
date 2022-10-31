@@ -28,6 +28,7 @@
 <body>
 <div align="center">
 <%@include file="header_manage.jsp"%><!-- 부트스트랩을 사용하겠다는 선언 -->
+	<br> <br>
 	<h1>회원 주문목록</h1>
 	<br><br><br>
 		<table border="1" class="table table-hover table-bordered border-secondary"

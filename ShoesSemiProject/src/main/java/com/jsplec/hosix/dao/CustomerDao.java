@@ -252,4 +252,42 @@ public class CustomerDao {
 		}
 		return check;
 	} // login
+	
+	
+	public int loginCheckManage(String cId, String cPw) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		int check = 0;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "select count(*) from manager ";
+			String query1 = "where mId = '" + cId + "' and mPw = '" + cPw + "'";
+			
+			preparedStatement = connection.prepareStatement(query + query1);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) { // true값일때만 가져온다
+				
+				check = resultSet.getInt(1);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (Exception e) {
+				
+			}
+		}
+		return check;
+	} // login
 } // End

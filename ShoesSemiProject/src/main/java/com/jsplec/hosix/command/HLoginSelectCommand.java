@@ -18,19 +18,24 @@ public class HLoginSelectCommand implements HCommand {
 		String cPw = request.getParameter("cPw");
 		String page;
 		int check;
+		int checkManage;
 
 		CustomerDao dao = new CustomerDao();
 		check = dao.login(cId, cPw);
-		
-		if (check == 1) {
-			//page = "index.jsp";
+		checkManage = dao.loginCheckManage(cId, cPw);
+
+		if (check == 1 && checkManage == 0) {
+			// page = "index.jsp";
 			page = "login_check.do";
 			request.setAttribute("cId", cId);
+		} else if (checkManage == 1) {
+			page = "manage_customer_order.do";
+			request.setAttribute("cId", cId);
 		} else {
-			//page = "login_fail.jsp";
+			// page = "login_fail.jsp";
 			page = "login_fail.do";
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		try {
 			dispatcher.forward(request, response);
