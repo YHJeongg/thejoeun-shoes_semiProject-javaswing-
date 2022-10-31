@@ -56,8 +56,6 @@ public class CustomerDto {
 		this.cPw = cPw;
 	}
 	
-	
-
 	public String getcId() {
 		return cId;
 	}

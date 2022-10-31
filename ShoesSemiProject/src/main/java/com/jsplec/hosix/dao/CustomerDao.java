@@ -112,7 +112,7 @@ public class CustomerDao {
 		PreparedStatement preparedStatement = null;
 		int returnValue = 0;
 
-		if (cNewpw1 != null) {
+		if (cNewpw1 != "") {
 			try {
 				connection = dataSource.getConnection();
 
@@ -147,6 +147,7 @@ public class CustomerDao {
 		} else {
 			try {
 				connection = dataSource.getConnection();
+				System.out.println("비밀번호 미입력");
 
 				String query = "update customer set cName = ?, cTelno = ?, cEmail = ?, cAddress = ? where cId = ?";
 				preparedStatement = connection.prepareStatement(query);
@@ -216,7 +217,8 @@ public class CustomerDao {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		int check = 0;
-
+		System.out.println("login check");
+		
 		try {
 			connection = dataSource.getConnection();
 			// String query="select cId, cPw from customer where cId='"+scId+"'"+" and cPw=

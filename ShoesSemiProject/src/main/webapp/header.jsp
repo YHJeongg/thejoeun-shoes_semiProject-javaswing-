@@ -45,13 +45,13 @@
                     	if (session.getAttribute("cId")==null) {
                     %>
                    			<form action="login.jsp">
-                    			<input type="submit" value="로그인" onclick="javascript: form.action='login.do'">
-                    			<input type="submit" value="회원가입" onclick="javascript: form.action='signup.do'">
+                    			<input type="submit" value="로그인" onclick="javascript: form.action='login.jsp'">
+                    			<input type="submit" value="회원가입" onclick="javascript: form.action='signup.jsp'">
                        		</form>
                     <%
                     	} else {
                     %>
-	                    	${cId} &nbsp;
+	                    	<a href="mypage_main.jsp">${cId}</a> &nbsp;
 	                    	<a href="cartlist.do">장바구니</a> &nbsp;
 	                    	<a href="logout.do">로그아웃</a> &nbsp;
 	                    	

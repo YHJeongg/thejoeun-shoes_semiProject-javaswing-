@@ -45,6 +45,7 @@
 	
 		</table>
 		</form>
+		<a href="index.jsp">메인</a>
 			
 	</div>
 
