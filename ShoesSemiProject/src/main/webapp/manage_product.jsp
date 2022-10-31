@@ -79,7 +79,7 @@
 				<td>${dto.pSize}</td>
 				<td>${dto.pStock}</td>
 				<td>${dto.pStockdate}</td>
-				<td><img name="image" src="./images/adidas.스니커즈.가젤.129,000.png" width="100"></td>
+				<td><img name="image" src="assets/img/product/${dto.pBrand}/${dto.pName}.png" width="100"></td>
 				<td>${dto.pInformation}</td>
 				<td><a href="HMPproduct_delete.do?pId=${dto.pId}">삭제</a></td>
 				<td><a href="HMPproduct_insert.do?pName=${dto.pName}">재고 요청</a></td>
