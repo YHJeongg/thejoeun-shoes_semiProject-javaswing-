@@ -3,6 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
  <!-- Header -->
+ <style> 
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: white;
+  border: none;
+  color: #59ab6e;
+  padding: 8px 26px;
+  text-decoration: none;
+  margin: 3px 1px;
+  cursor: pointer;
+}
+</style>
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -45,15 +56,16 @@
                     	if (session.getAttribute("cId")==null) {
                     %>
                    			<form action="login.jsp">
-                    			<input type="submit" value="로그인" onclick="javascript: form.action='login.jsp'">
+              	        		<input type="submit" value="로그인" onclick="javascript: form.action='login.jsp'" back>
+                    			&nbsp;
                     			<input type="submit" value="회원가입" onclick="javascript: form.action='signup.jsp'">
                        		</form>
                     <%
                     	} else {
                     %>
-	                    	<a href="mypage_main.jsp">${cId}</a> &nbsp;
-	                    	<a href="cartlist.do">장바구니</a> &nbsp;
-	                    	<a href="logout.do">로그아웃</a> &nbsp;
+	                    	<a href="mypage_main.jsp" style="text-decoration: none">${cId}</a> &nbsp;&nbsp;&nbsp;
+	                    	<a href="cartlist.do" style="text-decoration: none">장바구니</a> &nbsp;&nbsp;&nbsp;
+	                    	<a href="logout.do" style="text-decoration: none">로그아웃</a> &nbsp;&nbsp;&nbsp;
 	                    	
 	                 <%
                     	}
